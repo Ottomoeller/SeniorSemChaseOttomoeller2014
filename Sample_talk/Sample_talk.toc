@@ -1,0 +1,9 @@
+\beamer@endinputifotherversion {3.32pt}
+\select@language {english}
+\beamer@sectionintoc {2}{Background}{4}{0}{1}
+\beamer@sectionintoc {3}{Preprocessing the data}{5}{0}{2}
+\beamer@subsectionintoc {3}{1}{Linear Interpolation and Zero Normalization}{6}{0}{2}
+\beamer@subsectionintoc {3}{2}{Framing and Projection}{7}{0}{2}
+\beamer@sectionintoc {4}{Extracting Individual Gait}{8}{0}{3}
+\beamer@sectionintoc {5}{Analyzing the extracted Gait data}{9}{0}{4}
+\beamer@sectionintoc {6}{Results}{10}{0}{5}
