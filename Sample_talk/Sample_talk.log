@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2014.11.1)  13 NOV 2014 15:09
+This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2014.11.1)  13 NOV 2014 15:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -967,11 +967,11 @@ Overfull \hbox (46.55795pt too wide) detected at line 199
 File: Illustrations/gaitpatterns.png Graphic file (type png)
 
 <use Illustrations/gaitpatterns.png>
-Package pdftex.def Info: Illustrations/gaitpatterns.png used on input line 218.
+Package pdftex.def Info: Illustrations/gaitpatterns.png used on input line 217.
 
 (pdftex.def)             Requested size: 219.07065pt x 158.22125pt.
 
-Overfull \hbox (46.55795pt too wide) detected at line 218
+Overfull \hbox (46.55795pt too wide) detected at line 217
 [][][] $[]$[][][][][][][][] $[]$[][][][][][] 
  []
 
@@ -998,14 +998,14 @@ Overfull \hbox (46.55795pt too wide) detected at line 218
 \tf@snm=\write8
 \openout8 = `Sample_talk.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 409.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 409.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 408.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 408.
  (./Sample_talk.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 409.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 409.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 408.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 408.
 Package rerunfilecheck Info: File `Sample_talk.out' has not changed.
 (rerunfilecheck)             Checksum: 64ECD7F1109C190FE6452845C76845EB;436.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 409.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 408.
  ) 
 Here is how much of TeX's memory you used:
  16553 strings out of 495034
@@ -1017,7 +1017,7 @@ Here is how much of TeX's memory you used:
  56i,17n,64p,400b,694s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on Sample_talk.pdf (12 pages, 1031730 bytes).
+Output written on Sample_talk.pdf (12 pages, 1031698 bytes).
 PDF statistics:
  445 PDF objects out of 1000 (max. 8388607)
  408 compressed objects within 5 object streams
