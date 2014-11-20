@@ -55,7 +55,7 @@ This paper discusses a new form of mobile security not just emphasizing security
 \section{Preprocessing} 
 Once data is gathered it needs to preprocesed into a usable form. In this case a usable form is modified data that has been separated into frames. A frame is equally separated parts of data for feature extraction and classification. With two experiments, separating the data into modified frames was done differently. The fixed phone method used a strict test case that was modified using Linear Interpolation and Zero Normalization. The unfixed phone method used Framing to separate the data into frames. These frames were then modified by a method known as Projection. In the following sections I will explain the fixed and unfixed methods as well as comparing them. 
 
-\subsection{Interpolation and Zero Normalization }	
+\subsection{Interpolation and Zero Normalization}	
 	With the phone on the waist in a fixed position, uniform sets of data called walks were used. In this case one walk is represented by walking a measured distance down a hallway. The experiment was done is such a way that one set of data contained two "walks", or in other words, one set of data was walking a hallway; Once down and once back. After extracted, this data is modified to further extract features. These modifications include linear interpolation and zero normalization. 
 	
 \subsubsection{Interpolation} 
@@ -85,7 +85,7 @@ Both the fixed and unfixed method split the data into equal intervals and then m
 %----------------------------------------------------------------------------------------------------------------------%
 
 \section{Feature Extraction}
-	\textit{Feature Extraction} is extracting a set of data from a given frame to detect patterns of walking. Another way to define feature extraction is the process of extracting gait cycles from the data. The fixed method in order uses the following steps as seen in figure~\ref{fig:SecondStep}: Cycle length estimation, Cycle detection, Cycle length normalization, Omitting unusual cycles. The unfixed method extracts features using:Feature Extraction I, Walking Detection, Feature Extraction II.  
+	\textit{Feature Extraction} is extracting a set of data from a given frame to detect patterns of walking. Another way to define feature extraction is the process of extracting gait cycles from the data. The fixed method in order uses the following steps as seen in figure~\ref{fig:AccelChart}: Cycle length estimation, Cycle detection, Cycle length normalization, Omitting unusual cycles. The unfixed method extracts features using:Feature Extraction I, Walking Detection, Feature Extraction II.  
 \subsection{Fixed Method Feature Extraction}
 
 \subsubsection{Cycle Length Estimation}
