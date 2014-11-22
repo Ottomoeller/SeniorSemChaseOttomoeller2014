@@ -20,8 +20,9 @@ Chase R. Ottomoeller\\
 
 \maketitle
 %----------------------------------------------------------------------------------------------------------------------%
+\todo[inline]{I left some parts sparse as I'm still figuring out the amount of detail I want to put in that section.}
 \begin{abstract}
-This paper discusses a new form of mobile security not just emphasizing security, but also usability. Having a form of security of a mobile device that is unobtrusive can make that device easier and a less of a hassle to use. This paper will discuss using built in accelerometers in smart phones as way to collect biometric data. In this case the biometric data is a persons gait or walking pattern. This increases the security of the device by allowing the authentication to be not something you have or something you know, but something you are. There are two example that this paper will compare showing two forms of gait analysis. 
+This paper discusses a new form of mobile security not just emphasizing security, but also usability. Having a form of security of a mobile device that is unobtrusive can make that device easier and a less of a hassle to use. This paper will discuss using built in accelerometers in smart phones as a way to collect biometric data. In this case the biometric data is a persons gait or walking pattern. This increases the security of the device by allowing the authentication to not be something you have or something you know, but something you are. There are two example that this paper will compare showing two forms of gait analysis. 
 \end{abstract}
 
 \keywords{mobile security, gait recognition, biometrics, accelerometer}
@@ -29,7 +30,7 @@ This paper discusses a new form of mobile security not just emphasizing security
 \section{Introduction}
 \todo[inline]{This section will be redone}
 	As computational power in computers increases, the security risks grow higher for forms of authentication. One growing concern is security in mobile devices such as smart phones. Smart phones are also becoming increasingly more powerful, which results in more personal data being stored on the device. This means security for smart phones will become more important as time goes on. Currently security mainly consists of: pin, password, swipe lock, fingerprint. These forms are either something a person has(fingerprint) or something a person knows(password). They all also require a physical action to unlock the phone. A new form of mobile security involves a persons gait making it an unobtrusive form of security. This means that the built in accelerometer in the smart phone will analyze a persons walking pattern. If the phone tell that the current user should have access the phone will be unlocked, otherwise it will switch to the normal pin password. This will increase the security of the mobile device because the form of unlocking the device is now something you are and not something someone else can take form you. 
-	This paper will analyze two different approaches for gait extraction/analysis.  Each paper uses a general format format of analyzing the data which includes: Preprocessing, Feature Extraction, and Gait Analysis. Preprocessing is the process of capturing biometric data. Feature extraction is taking the raw biometric data and locating distinctive characteristics. Gait Analysis is taking the feature extracted data,and running algorithm on it which will return a positive or negative result. Though each paper follows this general outline, they did each step in a different way.
+	This paper will analyse two different approaches for gait extraction/analysis. Each paper uses a general format format of analysing the data which includes: Preprocessing, Feature Extraction, and Gait Analysis. Preprocessing is the process of capturing biometric data. Feature extraction is taking the raw biometric data and locating distinctive characteristics. Gait Analysis is taking the feature extracted data,and running algorithm on it which will return a positive or negative result. Though each paper follows this general outline, they did each step in a different way.
 
 %\begin{figure}
 %\centering
@@ -47,22 +48,21 @@ This paper discusses a new form of mobile security not just emphasizing security
 \todo[inline]{The introduction and background are similar and is being addressed.}
 %----------------------------------------------------------------------------------------------------------------------%
 \section{Background}
-	As computers become more advanced, security becomes more important. This is especially relevant to mobile devices. More and more information is being stored on mobile devices, and securing that information is essential. Currently, the security for accessing mobile devices is based on something someone has (card or key) or something someone knows(pin or password). With these two current forms of security it is becoming easier to steal or compute the needed key to access the mobile device. 
-		A new form of identificaton and verification is biometric based. Biometrics is used as a new form of security that provides unique identification to a mobile user. Now, instead of relying on a password of physical key, a person can gain access to their device by a physical trait specific to them. Some examples of biometric traits are: finger prints, facial features, eye, voice, hand, DNA, gait. In this paper I will focus on the gait recognition. The term gait refers to the walking pattern of a person. A persons walking pattern is cyclic in nature and may be composed of many gait cycles, where each gait cycle consists of at least two steps.~\cite{Sujithra:2012} 
-			There are three types of biometric gait recognition: machine vision based, floor sensor based, and wearable sensor based. With mobile devices becoming more and more equipped with an array of sensors, the technique most suited for mobile devices is a wearable sensor based, using the mobiles devices built-in accelerometer. Data collected from the accelerometer will be processed in a set of operations later described. 
-	In the next sections I will be comparing two approaches that use accelerometers from a mobile device such as a smart phone. The primary way in which these two approaches differ is the placement of the mobile device on the body. One approach has the smart phone in a fixed location on the waist. The other one has the smart phone in a more natural position on the body such as in a pocket. Though both papers use the general approach shown in figure 1 I will be simplifying them into three categories: Pre-Processing, Feature Extraction, and Gait Analysis. 
+	Biometrics is used as a new form of security that provides unique identification to a mobile user. Now, instead of relying on a password of physical key, a person can gain access to their device by a physical trait specific to them. Some examples of biometric traits are: finger prints, facial features, eye, voice, hand, DNA, gait. In this paper I will focus on the gait recognition. The term gait refers to the walking pattern of a person. A persons walking pattern is cyclic in nature and may be composed of many gait cycles, where each gait cycle consists of at least two steps.~\cite{Sujithra:2012} 
+	There are three types of biometric gait recognition: machine vision based, floor sensor based, and wearable sensor based. With mobile devices becoming more and more equipped with an array of sensors, the technique most suited for mobile devices is a wearable sensor based, using the mobiles devices built-in accelerometer. Data collected from the accelerometer will be processed in a set of operations later described. 
+	In the next sections I will be comparing two approaches that use accelerometers from a mobile device such as a smart phone. The primary way in which these two approaches differ is the placement of the mobile device on the body. One approach has the smart phone in a fixed location on the waist. I will refer to this method as the \textit{fixed} method. The other method has the smart phone in a more natural position on the body such as in a pocket. This method will be referred to as the \textit{unfixed} method. Though both papers use the general approach shown in figure ~\ref{fig:Paper1Summary} I will be simplifying them into three categories: Pre-Processing, Feature Extraction, and Gait Analysis. 
 %----------------------------------------------------------------------------------------------------------------------%
 \section{Preprocessing} 
-Once data is gathered it needs to preprocesed into a usable form. In this case a usable form is modified data that has been separated into frames. A frame is equally separated parts of data for feature extraction and classification. With two experiments, separating the data into modified frames was done differently. The fixed phone method used a strict test case that was modified using Linear Interpolation and Zero Normalization. The unfixed phone method used Framing to separate the data into frames. These frames were then modified by a method known as Projection. In the following sections I will explain the fixed and unfixed methods as well as comparing them. 
-
-\subsection{Interpolation and Zero Normalization}	
+Once data is gathered it needs to preprocesed into a usable form. For this paper a usable form is modified data that has been separated into frames. A frame is equally separated parts of data for feature extraction and classification. With two methods (fixed and unfixed), separating the data into modified frames was done differently. The fixed phone method used a strict test case that was modified using Linear Interpolation and Zero Normalization. The unfixed phone method used Framing and Projection. Framing separated the data into frames. These frames were then modified by using Projection. In the following sections I will explain the fixed and unfixed methods as well as compare them. 
+		%\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\%
+\subsection{Fixed Method Preprocessing}	
 	With the phone on the waist in a fixed position, uniform sets of data called walks were used. In this case one walk is represented by walking a measured distance down a hallway. The experiment was done is such a way that one set of data contained two "walks", or in other words, one set of data was walking a hallway; Once down and once back. After extracted, this data is modified to further extract features. These modifications include linear interpolation and zero normalization. 
-	
+			%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%
 \subsubsection{Interpolation} 
 	Once the walks are separated from the initial data, they have to be formed into equal intervals. This is done by applying \textit{Linear Interpolation}, which can reshape the data  into equal intervals. In order to not loose data during this change up-sampling is applied. Up-sampling avoids data loss by producing ``an approximation of the sequence that would have been obtained by sampling the signal at a higher rate''~\cite{wiki1:2014}. Once the data has been reshaped, the acceleration measurements have to be adjusted. 
-	
+			%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%
 \subsubsection{Zero Normalization}
-	The PMD's accelerometer being used measures 3 axis(X, Y, Z). the only axis needed, and the only axis affected by gravity is the X axis. Since the acceleration for the Y and Z axis are not stable over time, and they are not affected by earth's gravity, the acceleration data for the Y and Z axis have to be \textit{zero normalized}. In other words the data for the Y and Z axis have to be set to zero. This is done by simply subtracting their total acceleration from there average acceleration. An overview of the stages explained above are shown in figure ~\ref{fig:firstStep}.
+	The PMDs accelerometer being used measures 3 axis(X, Y, Z). the only axis needed, and the only axis affected by gravity is the X axis. Since the acceleration for the Y and Z axis are not stable over time, and they are not affected by earth's gravity, the acceleration data for the Y and Z axis have to be \textit{zero normalized}. In other words the data for the Y and Z axis have to be set to zero. This is done by simply subtracting their total acceleration from there average acceleration. An overview of the stages explained above are shown in figure ~\ref{fig:firstStep}.
 
 \begin{figure}
 \centering
@@ -71,7 +71,7 @@ Once data is gathered it needs to preprocesed into a usable form. In this case a
 \label{fig:firstStep}
 \end{figure}
 
-\subsection{Framing and Projection}{
+\subsection{Un-fixed Method Preprocessing}{
 	The previous method used a phone in a fixed location. This method tries to expand on this with a phone in a unfixed location, such as a pocket. Also, this method is less strict. It does no use a set length, such as a hallway, to mark each walk. Instead this method uses a processes called \textit{Framing}. Once the data is segmented into frames it is then projected onto a global coordinate system through a process know as \textit{Projection}.
 	}
 \subsubsection{Framing}{
@@ -85,9 +85,9 @@ Both the fixed and unfixed method split the data into equal intervals and then m
 %----------------------------------------------------------------------------------------------------------------------%
 
 \section{Feature Extraction}
-	\textit{Feature Extraction} is extracting a set of data from a given frame to detect patterns of walking. Another way to define feature extraction is the process of extracting gait cycles from the data. The fixed method in order uses the following steps as seen in figure~\ref{fig:AccelChart}: Cycle length estimation, Cycle detection, Cycle length normalization, Omitting unusual cycles. The unfixed method extracts features using:Feature Extraction I, Walking Detection, Feature Extraction II.  
+	\textit{Feature Extraction} is extracting a set of data from a given frame to detect patterns of walking. Another way to define feature extraction is the process of extracting gait cycles from the data. 
 \subsection{Fixed Method Feature Extraction}
-
+	The fixed method in order uses the following steps as seen in figure~\ref{fig:AccelChart}: Cycle length estimation, Cycle detection, Cycle length normalization, Omitting unusual cycles.
 \subsubsection{Cycle Length Estimation}
 Once the raw gait data is preprocessed, the next step is extracting the biometric gait cycles. The first step in extraction is to be able to automatically detect gait cycles in the walk. This detection is done by estimating the cycle length, which is simply computing minimum salience vector. There is a minimum salience vector for each data point for a given walk. Each minimum salience vector is computed by counting the data values that are between that current data value and the following smaller value in the walk vector. If the current salience vector is greater than the minimal peak distance or height, it is a cycle start. This same process is used to determine the maximum peak and distance as well.
 
@@ -129,25 +129,24 @@ Some cycles compared to the majority are considered unusual. These could be caus
 \label{fig:TD2}
 \end{figure}
 
-\subsection{Time-domain and Frequency-domain}
-	A different form of extraction used by ~\cite{Lu:2014} uses a combination of time-domain, frequency-domain, and auto-correlation features. 
+\subsection{Unfixed Method Feature Extraction}
+	A different form of extraction used by ~\cite{Lu:2014} uses a combination of time-domain, frequency-domain, and auto-correlation features. This example also did feature extraction in two stages: calculating the set of features for walking and calculating more precise gait features. 
+	
 \subsubsection{Feature Extraction I}
-
+	The first stage of the feature extraction is used to tell whether or not the data represents walking data. This is done to rule out the times when the mobile device is not collecting the right data. For example if the mobile device was collecting data when it was in a car going down the road, that data shouldn't be used because it isn't gait data. This also holds true for collecting data on someone who is standing still. The data collected wouldn't represent the data needed for a biometric. Telling whether the data collected is of someone walking is done by collecting vertical and horizontal features to produce motion patters. Six time-domain features are used for both directions. These six feature are :mean, variance, skewness, kurtosis, energy, mean-crossing rate. All these features are based on spectrum analysis. In other words, doing ``different activities have different energy distributions over the frequency spectrum.''~\cite{Lu:2014} Walking can be measured around 1-2Hz while driving in a car will output a higher frequency band. Based on these frequency levels the data is put into one of three classes: walking, non-walking and motion(high frequency movement such as a in a vehicle or running).~\cite{Muaaz:2013}
+	
 \subsubsection{Walking Detection}
+	Using data from feature extraction I, classification can be done using a decision tree.There are three activities that the data can be classified as: walking, non-walking, and random movements. Non-walking motion is running, biking, or moving in a vehicle. Random motion is a motion such as turning or skipping. A Markov Model smoother is applied to the new set of data to get rid of any outliers. 
+\subsubsection{Feature Extraction II}{
+	Feature extraction II is done once the data collected is determined to be gait data. In this stage more relevant features are extracted for analysis. The first analysis to be done is the Compressed sub-band cepstral coefficients(CSCC). This is done in the following three steps. First, the energy spectrum is computed using the FFT spectrum. The Fast Fourier Transform(FFT) is an alogorithm that computes the Discrete Fourieer Transform(DFT) and its inverse. The study maps the energy spectrum into 26 bands using triangular overlapping bands and sum up the energy in each band. The processing then takes the discrete cosine transform of the sub-band energy to form a 12-dimension vector representation. This in all summarizes the fundamental frequency of the movements and the higher frequency vibrations in the data.~\cite{Sujithra:2012}
+}
+\todo[inline]{This section will need further explanation, clarification and or simplification.}
 
-\subsubsection{Feature Extraction II}
-\todo[inline]{This section will be redone}
-\todo[inline]{I will go over the unfixed method of feature extraction and then do a camparison of the two: How are they similar, why are they different, what benifit does either one hold. ~\ref{fig:TD1} and ~\ref{fig:TD2}}
-This example also did feature extraction in two stages: calculating the set of features for walking and calculating more precise gait features. 
-The first stage of the feature extraction is used to tell whether or not the data represents walking data. This is done to rule out the times when the mobile device is not collecting the right data. For example if the mobile device was collecting data when it was in a car going down the road, that data shouldn't be used because it isn't gait data. This also holds true for collecting data on someone who is standing still. The data doesn't wouldn't represent the data needed for a biometric. Telling whether the data collected is of someone walking is done by collecting vertical and horizontal features to produce motion patters. Six time-domain features are used for both directions. These six feature are :mean, variance, skewness, kurtosis, energy, mean-crossing rate. All these features are based on spectrum analysis. In other words, doing ``different activities have different energy distributions over the frequency spectrum.''~\cite{Lu:2014} Walking can be measured around 1-2Hz while driving in a car will output a higher frequency band. Based on these frequency levels the data is put into one of three classes: walking, non-walking and motion(high frequency movement such as a in a vehicle or running).
-The second feature extraction done once the data collected is determined to be that representing gait data. In this stage more relevant features are extracted for analysis. The first analysis to be done is the Compressed sub-band cepstral coefficients(CSCC). This is done in the following three steps. First, the energy spectrum is computed using the FFT spectrum. The Fast Fourier Transform(FFT) is an alogorithm that computes the Discrete Fourieer Transform(DFT) and its inverse. 
-Second, the study maps the energy spectrum into 26 bands using triangular overlapping bands and sum up the energy in each band. Third, the processing takes the discrete cosine transform of the sub-band energy to form a 12-dimension vector representation. This in all summarizes the fundamental frequency of the movements and the higher frequency vibrations in the data.
-
-
+	Both of these methods of feature extraction try to determine what parts of the data represent a walk cycle. The fixed method is simpler because it doesn't have to worry about different variables affecting the data. Though this method is simpler, it has the stipulation of the mobile device being clipped to your waste. The non-fixed method has to worry about more variables affecting the data, but implements a real life situation of just having the mobile device in a pocket.
 %----------------------------------------------------------------------------------------------------------------------%
 \section{Gait Classification}
-\todo[inline]{This section will be redone}
-	This last step is taking the extracted features and verifying that those features match a stored set of features; the stored set of features being the users. The first paper uses Support Vector Machines(SVM's). The basic idea of SVM's is taking dimentional data and separating it into two classes. This involves the use of a Gaussian kernel defined in the following section. The second paper uses a Gaussian Mixture Model - Universal Background Model(GMM-UBM) framework to verify a individuals gait. The basic idea with this technique is with scoring. Verification of a users identity is done by comparing the likelihood score from a users gait pattern to the universal back ground model. The universal back ground model represents human gait patterns in general.
+\todo[inline]{This section will be reworded, and organized and added to}
+	This last step is taking the extracted features and verifying that those features match a stored set of features; the stored set of features being the users. The fixed method uses Support Vector Machines(SVM's). The basic idea of SVM's is taking dimensional data and separating it into two classes. This involves the use of a Gaussian kernel defined in the following section. The unfixed method uses a Gaussian Mixture Model - Universal Background Model(GMM-UBM) framework to verify a individuals gait. The basic idea with this technique is with scoring. Verification of a users identity is done by comparing the likelihood score from a users gait pattern to the universal back ground model. The universal back ground model represents human gait patterns in general.
 
 
 
@@ -161,7 +160,7 @@ Second, the study maps the energy spectrum into 26 bands using triangular overla
 
 \subsection{Template-based classification}
 \todo[inline]{This section will be redone}
-	The template-based classification uses the same approach for gait extraction as shown in~\ref{fig:SecondStep} with one extra step added show in \~ref{fig:AddedStep}. Before the Cycle Length Estimation module is Piecewise Linear Approximation(PLA). A Piecewise Linear Function(PLF) is used to for the PLA. A PLF is a function composed of straight-line sections connecting points on a graph. So, a PLA is an approximation of a function connecting significant points on the curve with straight-line sections. The approach used to produce the PLA representations is the
+	The template-based classification uses the same approach for gait extraction as shown in~\ref{fig:SecondStep} with one extra step added show in \~ref{fig:AddedStep}. Before the Cycle Length Estimation module is Piecewise Linear Approximation(PLA). A Piecewise Linear Function(PLF) is used for the PLA. A PLF is a function composed of straight-line sections connecting points on a graph. So, a PLA is an approximation of a function connecting significant points on the curve with straight-line sections. The approach used to produce the PLA representations is the
 Sliding Window And Bottom-up(SWAB). Once the unusual cycles are omitted, the best cycle is picked. The best cycle is determined by having the lowest DTW 
 %\todo[inline]{This section will be redone}
 One the best cycle is foundA the remaining cycles are called probe cycles. These two sets of cycles are compared using the DTW distance to compute the genuine and impostor class. The DTW of each cycle is computed and majority voting takes place. If 50\% or more of the comparisons returns and accept then the cycle in a genuine, otherwise it's rejected as an imposter. 
@@ -174,8 +173,8 @@ One the best cycle is foundA the remaining cycles are called probe cycles. These
 \label{fig:TrainingData}
 \end{figure}
 
-\subsection{Machine learning based classification}
-\todo[inline]{This section will be redone}
+\subsection{Fixed Method Gait Classification}
+\todo[inline]{This section will be reworked}
 	SVM is another way that this paper classified gait data. SVMs are often used for biometric recognition, where imposter and genuine data have been determined. In simple terms a SVM finds a hyperplane that linearly separates \begin{math}\mathcal{D} \end{math} dimensional data into two classes. The dimensional data has to be linearly separable for SVM to work. Since the gait data isn't linearly separable, a ``kernel induced feature space''~\cite{Muaaz:2013} is introduced in SVM. A kernel function maps non linearly separable data to a high dimensional space. One mapped to a high dimensional space the data is lenearly separable and therefore can be used in the SVM. This means that depending on the kernel function you use, the better classification accuracy it will produce.
 %
 %\begin{displaymath}
@@ -201,7 +200,8 @@ Using GDTW kernel ~\ref{eq:KF3} as the kernel matrix also allows to classify the
 %\label{eq:KF3}
 %\end{displaymath}
 
-\subsection{Paper 2 Gait Classification}
+\subsection{Unfixed Method Gait Classification}
+\todo[inline]{Still parsing through this section deciding what to add and how detailed it should be.}
 %----------------------------------------------------------------------------------------------------------------------%
 %\section{Experiment Results}
 %\subsubsection{Paper 1(title place holder)}
