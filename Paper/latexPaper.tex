@@ -64,19 +64,16 @@ Once data is gathered it needs to preprocesed into a usable form. For this paper
 \subsubsection{Zero Normalization}
 	The PMDs accelerometer being used measures 3 axis(X, Y, Z). the only axis needed, and the only axis affected by gravity is the X axis. Since the acceleration for the Y and Z axis are not stable over time, and they are not affected by earth's gravity, the acceleration data for the Y and Z axis have to be \textit{zero normalized}. In other words the data for the Y and Z axis have to be set to zero. This is done by simply subtracting their total acceleration from there average acceleration. An overview of the stages explained above are shown in figure ~\ref{fig:firstStep}.
 
-\begin{figure}
-\centering
-\psfig{file=chart1.png,width =3in}
-\caption{Preprocessing Step}
-\label{fig:firstStep}
-\end{figure}
 
+		%\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\%
 \subsection{Un-fixed Method Preprocessing}{
 	The previous method used a phone in a fixed location. This method tries to expand on this with a phone in a unfixed location, such as a pocket. Also, this method is less strict. It does no use a set length, such as a hallway, to mark each walk. Instead this method uses a processes called \textit{Framing}. Once the data is segmented into frames it is then projected onto a global coordinate system through a process know as \textit{Projection}.
 	}
+			%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%
 \subsubsection{Framing}{
  During Framing, sensor data is segmented into uniform frames for feature extraction and feature classification. Unlike the data for the fixed method, this data is segmented into 512 equal length samples. This is done by taking a sample every 5.12 seconds. They state the reason for 512 samples was "to balance between estimation accuracy and latency. Also, not all frames move onto feature extraction. Frames that are below a chosen threshold, representing no movement, are dropped. 
  }
+ 			%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%
 \subsubsection{Projection}{
 Each sample within a given frame contains an X, Y and Z coordinate. Each coordinate is then projected into a vertical and horizontal variable. Once each sample is projected, the direction of gravity is determined by using a mean filter. Unlike the previous example, this process doesn't assume a fixed location or orientation of the mobile device. If there is a significant change in the gravity variable then the orientation of the device has changed. This means the corresponding frame will be dropped and the horizontal and vertical axes will be adjusted accordingly. 
 }
@@ -86,112 +83,67 @@ Both the fixed and unfixed method split the data into equal intervals and then m
 
 \section{Feature Extraction}
 	\textit{Feature Extraction} is extracting a set of data from a given frame to detect patterns of walking. Another way to define feature extraction is the process of extracting gait cycles from the data. 
+		%\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\%
 \subsection{Fixed Method Feature Extraction}
 	The fixed method in order uses the following steps as seen in figure~\ref{fig:AccelChart}: Cycle length estimation, Cycle detection, Cycle length normalization, Omitting unusual cycles.
+			%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%
 \subsubsection{Cycle Length Estimation}
 Once the raw gait data is preprocessed, the next step is extracting the biometric gait cycles. The first step in extraction is to be able to automatically detect gait cycles in the walk. This detection is done by estimating the cycle length, which is simply computing minimum salience vector. There is a minimum salience vector for each data point for a given walk. Each minimum salience vector is computed by counting the data values that are between that current data value and the following smaller value in the walk vector. If the current salience vector is greater than the minimal peak distance or height, it is a cycle start. This same process is used to determine the maximum peak and distance as well.
-
+			%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%
 \subsubsection{Cycle Detection}
 Once both minimum and maximum salience vectors are computed so they can be used to detect individual cycles. A good example can be seen in figure ~\ref{fig:TD1}. In this figure the minimum salience vectors are seen in blue and the accelerometer data is seen in red. We can easily see where the start of each cycle is based on the minimum salience vector. Maximum salience vectors are also computed to help determine the exact minima.
-
+			%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%
 \subsubsection{Cycle Length Normalization}
 Using linear interpolation again, the determined cycles are normalized to a set length. These set lengths are later required in the Euclidean distance which requires vectors of the same length.
-
+			%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%
 \subsubsection{Omitting Unusual Cycles}
 Some cycles compared to the majority are considered unusual. These could be caused by any motion or non-motion that isn't walking. This is done by ``computing the distance using \textit{Dynamic Time Warping} (DTW).''~\cite{Muaaz:2013} Dynamic time warping is ``an algorithm for measuring similarity between two temporal sequences which may vary in time or speed.''~\cite{wiki2:2014}This means that cycles with a distance of half or more of the other cycles will be removed.
 
-
-\begin{figure*}
-\centering
-\psfig{file=svector.png,width =5.3in}
-\caption{Minimum Salient Vectors}
-\label{fig:AccelChart}
-\end{figure*}
-
-\begin{figure}
-\centering
-\psfig{file=chart2.png,width =3in}
-\caption{Feature Extraction}
-\label{fig:SecondStep}
-\end{figure}
-
-\begin{figure}
-\centering
-\psfig{file=abcd.png,width =3in}
-\caption{(a) projected vertical component. (b) normalized autocorrelation of the vertical component. (c) projected horizontal component. (d) normalized autocorrelation of the horizontal component}
-\label{fig:TD1}
-\end{figure}
-
-\begin{figure}
-\centering
-\psfig{file=FESP.png,width =3in}
-\caption{Algorithm work-flow for (a) generate user gait model by MAP adaptation (b) runtime inference and Individual model adaptation}
-\label{fig:TD2}
-\end{figure}
-
+		%\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\%
 \subsection{Unfixed Method Feature Extraction}
 	A different form of extraction used by ~\cite{Lu:2014} uses a combination of time-domain, frequency-domain, and auto-correlation features. This example also did feature extraction in two stages: calculating the set of features for walking and calculating more precise gait features. 
-	
+			%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%
 \subsubsection{Feature Extraction I}
 	The first stage of the feature extraction is used to tell whether or not the data represents walking data. This is done to rule out the times when the mobile device is not collecting the right data. For example if the mobile device was collecting data when it was in a car going down the road, that data shouldn't be used because it isn't gait data. This also holds true for collecting data on someone who is standing still. The data collected wouldn't represent the data needed for a biometric. Telling whether the data collected is of someone walking is done by collecting vertical and horizontal features to produce motion patters. Six time-domain features are used for both directions. These six feature are :mean, variance, skewness, kurtosis, energy, mean-crossing rate. All these features are based on spectrum analysis. In other words, doing ``different activities have different energy distributions over the frequency spectrum.''~\cite{Lu:2014} Walking can be measured around 1-2Hz while driving in a car will output a higher frequency band. Based on these frequency levels the data is put into one of three classes: walking, non-walking and motion(high frequency movement such as a in a vehicle or running).~\cite{Muaaz:2013}
-	
+			%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%
 \subsubsection{Walking Detection}
 	Using data from feature extraction I, classification can be done using a decision tree.There are three activities that the data can be classified as: walking, non-walking, and random movements. Non-walking motion is running, biking, or moving in a vehicle. Random motion is a motion such as turning or skipping. A Markov Model smoother is applied to the new set of data to get rid of any outliers. 
+			%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%
 \subsubsection{Feature Extraction II}{
 	Feature extraction II is done once the data collected is determined to be gait data. In this stage more relevant features are extracted for analysis. The first analysis to be done is the Compressed sub-band cepstral coefficients(CSCC). This is done in the following three steps. First, the energy spectrum is computed using the FFT spectrum. The Fast Fourier Transform(FFT) is an alogorithm that computes the Discrete Fourieer Transform(DFT) and its inverse. The study maps the energy spectrum into 26 bands using triangular overlapping bands and sum up the energy in each band. The processing then takes the discrete cosine transform of the sub-band energy to form a 12-dimension vector representation. This in all summarizes the fundamental frequency of the movements and the higher frequency vibrations in the data.~\cite{Sujithra:2012}
 }
 \todo[inline]{This section will need further explanation, clarification and or simplification.}
 
 	Both of these methods of feature extraction try to determine what parts of the data represent a walk cycle. The fixed method is simpler because it doesn't have to worry about different variables affecting the data. Though this method is simpler, it has the stipulation of the mobile device being clipped to your waste. The non-fixed method has to worry about more variables affecting the data, but implements a real life situation of just having the mobile device in a pocket.
+	
+	
 %----------------------------------------------------------------------------------------------------------------------%
 \section{Gait Classification}
 \todo[inline]{This section will be reworded, and organized and added to}
 	This last step is taking the extracted features and verifying that those features match a stored set of features; the stored set of features being the users. The fixed method uses Support Vector Machines(SVM's). The basic idea of SVM's is taking dimensional data and separating it into two classes. This involves the use of a Gaussian kernel defined in the following section. The unfixed method uses a Gaussian Mixture Model - Universal Background Model(GMM-UBM) framework to verify a individuals gait. The basic idea with this technique is with scoring. Verification of a users identity is done by comparing the likelihood score from a users gait pattern to the universal back ground model. The universal back ground model represents human gait patterns in general.
 
 
-
-
-\begin{figure}
-\centering
-\psfig{file=PreprocessedData.png,width =3in}
-\caption{Gait cycle extraction steps with Piecewise Linear Approximation(PLA)}
-\label{fig:AddedStep}
-\end{figure}
-
+		%\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\%
 \subsection{Template-based classification}
 \todo[inline]{This section will be redone}
-	The template-based classification uses the same approach for gait extraction as shown in~\ref{fig:SecondStep} with one extra step added show in \~ref{fig:AddedStep}. Before the Cycle Length Estimation module is Piecewise Linear Approximation(PLA). A Piecewise Linear Function(PLF) is used for the PLA. A PLF is a function composed of straight-line sections connecting points on a graph. So, a PLA is an approximation of a function connecting significant points on the curve with straight-line sections. The approach used to produce the PLA representations is the
+	The template-based classification uses the same approach for gait extraction as shown in~\ref{fig:SecondStep} with one extra step added show in \ref{fig:AddedStep}. Before the Cycle Length Estimation module is Piecewise Linear Approximation(PLA). A Piecewise Linear Function(PLF) is used for the PLA. A PLF is a function composed of straight-line sections connecting points on a graph. So, a PLA is an approximation of a function connecting significant points on the curve with straight-line sections. The approach used to produce the PLA representations is the
 Sliding Window And Bottom-up(SWAB). Once the unusual cycles are omitted, the best cycle is picked. The best cycle is determined by having the lowest DTW 
 %\todo[inline]{This section will be redone}
 One the best cycle is foundA the remaining cycles are called probe cycles. These two sets of cycles are compared using the DTW distance to compute the genuine and impostor class. The DTW of each cycle is computed and majority voting takes place. If 50\% or more of the comparisons returns and accept then the cycle in a genuine, otherwise it's rejected as an imposter. 
 
-
-\begin{figure}
-\centering
-\psfig{file=TrainingData.png,width =3in}
-\caption{Preparing data for SVM)}
-\label{fig:TrainingData}
-\end{figure}
-
+		%\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\%
 \subsection{Fixed Method Gait Classification}
 \todo[inline]{This section will be reworked}
-	SVM is another way that this paper classified gait data. SVMs are often used for biometric recognition, where imposter and genuine data have been determined. In simple terms a SVM finds a hyperplane that linearly separates \begin{math}\mathcal{D} \end{math} dimensional data into two classes. The dimensional data has to be linearly separable for SVM to work. Since the gait data isn't linearly separable, a ``kernel induced feature space''~\cite{Muaaz:2013} is introduced in SVM. A kernel function maps non linearly separable data to a high dimensional space. One mapped to a high dimensional space the data is lenearly separable and therefore can be used in the SVM. This means that depending on the kernel function you use, the better classification accuracy it will produce.
-%
-%\begin{displaymath}
-%K : X \times X \rightarrow \mathbb{R}, \forall \{x,z\} \in X
-%\label{eq:KF1} 
-%\end{displaymath}
-%
-%\begin{displaymath}
-%K(x,z)=< \phi (x).\phi(z) > 
-%\label{eq:KF2}
-%\end{displaymath}
+	SVMs are another way to classify gait data. SVMs are often used for biometric recognition, where imposter and genuine data have to be determined. First the SVM finds a \textit{hyperplane}. A hyperplane is a subspace that is one dimension less than its ``ambient space". For example, there could be a set of data represented by 3 axis (X,Y,Z). The hyperplane would be the same data plotted on a 2 axis space. So, the SVM will take the data, and find a hyperplane that linearly separates \begin{math}\mathcal{D} \end{math} dimensional data into two classes. The dimensional data has to be linearly separable for SVM to work. Since the gait data isn't linearly separable, a ``kernel induced feature space''~\cite{Muaaz:2013} is introduced in SVM. A kernel function maps non linearly separable data to a high dimensional space. Once mapped to a high dimensional space the data is linearly separable and therefore can be used in the SVM. This means that depending on the kernel function you use, the better classification accuracy it will produce. 
+% Reword this to get rid of euclidean distance.	
+	Another more commonly used kernel function is the Gaussian kernel, which uses the Euclidean distance. Since the Euclidean distance restricts to only using fixed length cycles, using the DTW distance gets rid of this restriction. Two different approaches now can be used to classify gait cycles:Pre-computed data matrix, Pre-computed kernel. ~\ref{fig:TrainingData}
 
-Another more commonly used kernel function is the Gaussian kernel, which uses the Euclidean distance. Since the Euclidean distance restricts to only using fixed length cycles, using the DTW distance gets rid of this restriction. Two different approaches now can be used to classify gait cycles:Pre-computed data matrix, Pre-computed kernel. ~\ref{fig:TrainingData}
-
+			%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%
 \subsubsection{Pre-computed data matrix}
 \todo[inline]{This section will be redone}
 	Gait cycles are represented by the DTW distance. This is the distance between two gait cycles. The benefit of the DTW distance is that different length gait cycles can be found. A DTW matrix is then computed from the sample and the other remaining gait cycles. This matrix is needed as an input for the SVM. 
+	
+			%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%
 \subsubsection{Pre-computed Kernel}
 Using GDTW kernel ~\ref{eq:KF3} as the kernel matrix also allows to classify the gait data.
 
@@ -200,6 +152,7 @@ Using GDTW kernel ~\ref{eq:KF3} as the kernel matrix also allows to classify the
 %\label{eq:KF3}
 %\end{displaymath}
 
+		%\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\%
 \subsection{Unfixed Method Gait Classification}
 \todo[inline]{Still parsing through this section deciding what to add and how detailed it should be.}
 %----------------------------------------------------------------------------------------------------------------------%
@@ -207,19 +160,7 @@ Using GDTW kernel ~\ref{eq:KF3} as the kernel matrix also allows to classify the
 %\subsubsection{Paper 1(title place holder)}
 %\subsubsection{Paper 2(title place holder)}
 
-\begin{figure}
-\centering
-\psfig{file=sumary1.png,height =2.5in, width =2in}
-\caption{Algorithm Overview}
-\label{fig:Paper1Summary}
-\end{figure}
 
-\begin{figure*}
-\centering
-\psfig{file=sumary2.png,width =5.3in}
-\caption{Algorithm Overview}
-\label{fig:Paper2Summary}
-\end{figure*}
 %----------------------------------------------------------------------------------------------------------------------%
 \section{Conclusion}
 \todo[inline]{This section will be redone} 
@@ -239,6 +180,89 @@ I have compared two forms of using built gait as a form of mobile security. One 
 % You must have a ".bib" file and remember to run:
 %     pdflatex bibtex pdflatex pdflatex
 % in order to see all the citation references correctly.
+
+%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%
+\begin{figure}
+\centering
+\psfig{file=chart1.png,width =3in}
+\caption{Preprocessing Step}
+\label{fig:firstStep}
+\end{figure}
+
+%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%
+\begin{figure*}
+\centering
+\psfig{file=svector.png,width =5.3in}
+\caption{Minimum Salient Vectors}
+\label{fig:AccelChart}
+\end{figure*}
+
+%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%
+\begin{figure}
+\centering
+\psfig{file=chart2.png,width =3in}
+\caption{Feature Extraction}
+\label{fig:SecondStep}
+\end{figure}
+
+%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%
+\begin{figure}
+\centering
+\psfig{file=abcd.png,width =3in}
+\caption{(a) projected vertical component. (b) normalized autocorrelation of the vertical component. (c) projected horizontal component. (d) normalized autocorrelation of the horizontal component}
+\label{fig:TD1}
+\end{figure}
+
+%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%
+\begin{figure}
+\centering
+\psfig{file=FESP.png,width =3in}
+\caption{Algorithm work-flow for (a) generate user gait model by MAP adaptation (b) runtime inference and Individual model adaptation}
+\label{fig:TD2}
+\end{figure}
+
+%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%
+\begin{figure}
+\centering
+\psfig{file=PreprocessedData.png,width =3in}
+\caption{Gait cycle extraction steps with Piecewise Linear Approximation(PLA)}
+\label{fig:AddedStep}
+\end{figure}
+
+%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%
+\begin{figure}
+\centering
+\psfig{file=TrainingData.png,width =3in}
+\caption{Preparing data for SVM)}
+\label{fig:TrainingData}
+\end{figure}
+
+%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%
+\begin{figure}
+\centering
+\psfig{file=sumary1.png,height =2.5in, width =2in}
+\caption{Algorithm Overview}
+\label{fig:Paper1Summary}
+\end{figure}
+
+%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%
+\begin{figure*}
+\centering
+\psfig{file=sumary2.png,width =5.3in}
+\caption{Algorithm Overview}
+\label{fig:Paper2Summary}
+\end{figure*}
+
+%
+%\begin{displaymath}
+%K : X \times X \rightarrow \mathbb{R}, \forall \{x,z\} \in X
+%\label{eq:KF1} 
+%\end{displaymath}
+%
+%\begin{displaymath}
+%K(x,z)=< \phi (x).\phi(z) > 
+%\label{eq:KF2}
+%\end{displaymath}
 
 \end{document}
 
