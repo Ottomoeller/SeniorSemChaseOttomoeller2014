@@ -2,6 +2,7 @@
 \usepackage{color}
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage{amssymb}
+\usepackage{upgreek}
 \begin{document}
 \conferenceinfo{UMM CSci Senior Seminar Conference, December 2014}{Morris, MN}
 
@@ -134,27 +135,33 @@ One the best cycle is foundA the remaining cycles are called probe cycles. These
 		%\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\%
 \subsection{Fixed Method Gait Classification}
 \todo[inline]{This section will be reworked}
-	SVMs are another way to classify gait data. SVMs are often used for biometric recognition, where imposter and genuine data have to be determined. First the SVM finds a \textit{hyperplane}. A hyperplane is a subspace that is one dimension less than its ``ambient space". For example, there could be a set of data represented by 3 axis (X,Y,Z). The hyperplane would be the same data plotted on a 2 axis space. So, the SVM will take the data, and find a hyperplane that linearly separates \begin{math}\mathcal{D} \end{math} dimensional data into two classes. The dimensional data has to be linearly separable for SVM to work. Since the gait data isn't linearly separable, a ``kernel induced feature space''~\cite{Muaaz:2013} is introduced in SVM. A kernel function maps non linearly separable data to a high dimensional space. Once mapped to a high dimensional space the data is linearly separable and therefore can be used in the SVM. This means that depending on the kernel function you use, the better classification accuracy it will produce. 
+	SVMs are another way to classify gait data. SVMs are often used for biometric recognition, where imposter and genuine data have to be determined. First the SVM finds a \textit{hyperplane}. A hyperplane is a subspace that is one dimension less than its ``ambient space". For example, there could be a set of data represented by 3 axis (X,Y,Z). The hyperplane would be the same data plotted on a 2 axis space. So, the SVM will take the data, and find a hyperplane that linearly separates \begin{math}\mathcal{D} \end{math} dimensional data into two classes. The dimensional data has to be linearly separable for the SVM to work. Since the gait data isn't linearly separable, a ``kernel induced feature space''~\cite{Muaaz:2013} is introduced in the SVM. A kernel function maps non linearly separable data to a high dimensional space. Once mapped to a high dimensional space the data is linearly separable and therefore can be used by the SVM to find a hyperplane. This means that depending on the kernel function you use, the better classification accuracy it will produce. 
 % Reword this to get rid of euclidean distance.	
-	Another more commonly used kernel function is the Gaussian kernel, which uses the Euclidean distance. Since the Euclidean distance restricts to only using fixed length cycles, using the DTW distance gets rid of this restriction. Two different approaches now can be used to classify gait cycles:Pre-computed data matrix, Pre-computed kernel. ~\ref{fig:TrainingData}
+%	Another more commonly used kernel function is the Gaussian kernel, which uses the Euclidean distance. Since the Euclidean distance restricts to only using fixed length cycles, 
+There are kernel functions that would require the use of fixed length gait cycles. Since gait cycles are not usually of a fixed length, a different kernel is used. By using the DTW distance, the problem of fix-length input feature vectors can be solved as well as more accurate finding of similarity in the data. Two different approaches using SVM and DTW can be used to classify gait cycles:Pre-computed data matrix, and Pre-computed kernel. ~\ref{fig:TrainingData}
 
 			%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%
 \subsubsection{Pre-computed data matrix}
-\todo[inline]{This section will be redone}
-	Gait cycles are represented by the DTW distance. This is the distance between two gait cycles. The benefit of the DTW distance is that different length gait cycles can be found. A DTW matrix is then computed from the sample and the other remaining gait cycles. This matrix is needed as an input for the SVM. 
+	Gait cycles are represented by the DTW distance. The DTW distance is the distance between two gait cycles. The benefit of the DTW distance is that gait cycles with different length can be found. A DTW matrix is then computed by taking the sample DTW distance and compared to all other samples. This matrix is needed as an input for the SVM.
 	
 			%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%
 \subsubsection{Pre-computed Kernel}
-Using GDTW kernel ~\ref{eq:KF3} as the kernel matrix also allows to classify the gait data.
+Using GDTW kernel equation ~\ref{eq:KF3} as the kernel matrix also allows to classify the gait data. Though this kernel matrix is a symmetric matrix, it is not guaranteed that it has all positive eigenvalues. 
 
-%\begin{displaymath}
-%K(x,z)=exp(-\gamma \parallel DTW(x,z) \parallel ^2)
-%\label{eq:KF3}
-%\end{displaymath}
+\begin{equation} \label{eq:KF3}
+K(x,z)=exp(-\gamma \parallel DTW(x,z) \parallel ^2)
+\end{equation}
 
 		%\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\%
 \subsection{Unfixed Method Gait Classification}
-\todo[inline]{Still parsing through this section deciding what to add and how detailed it should be.}
+The framework used for classifying gait cycles is a Gaussian Mixture Model-Universal Background (GMM-UBM). The algorithm can be split into three primary sections: UBM training, user gait model genertion, runtime inference and adaptation. 
+
+	 The UBM is a large Universal background GMM that is trained from a large source of data. This means a UBM represents the general walk pattern of humans. The UBM is defined as 
+\begin{math} \lambda \end{math} (\begin{math} \omega \end{math},
+\begin{math} \upmu \end{math},
+\begin{math} \Sigma \end{math}) where
+\begin{math} \omega \end{math} represents the mixture weight, \begin{math} \upmu \end{math} represents the mean, and \begin{math} \Sigma \end{math} represents the covariance matrix. In other words \begin{math} \omega \end{math} is the prior distribution of waling patterns while \begin{math} \upmu \end{math} and \begin{math} \Sigma \end{math} are different walking patterns given by the population in different conditions. For efficiency the \textit{covariance matrix} is used. A covariance matrix ``generalizes the notion of variance to multiple dimensions.'' Also, to avoid over fitting the training data, a standard expectation maximization (EM) algorithm is applied. The EM is what trains the UBM models. For example, if given a collection of training vectors, the EM estimates the parameters to most likely to occur. The EM algorithm does this through iteration. Each time the algorithm iterates it refines the GMM parameters, increasing the likelihood of the estimated model for the given feature vectors.
+%maybe provide an example?????
 %----------------------------------------------------------------------------------------------------------------------%
 %\section{Experiment Results}
 %\subsubsection{Paper 1(title place holder)}
@@ -162,9 +169,8 @@ Using GDTW kernel ~\ref{eq:KF3} as the kernel matrix also allows to classify the
 
 
 %----------------------------------------------------------------------------------------------------------------------%
-\section{Conclusion}
-\todo[inline]{This section will be redone} 
-I have compared two forms of using built gait as a form of mobile security. One experiment used a fixed location for the device while the other used multiple locations. Both use different methods of extracting the gait data as well as well as analysing the data, but each method works. Both of these experiments are not perfect yet but they both show promise in using walking patterns as a form of mobile security. With more sampling/testing as well as improving efficiency with algorithms will improve these mobile security methods and show potential to become implemented in a large scale. 
+\section{Putting it all Together}
+I have compared two forms of using built gait as a form of mobile security. One experiment used a fixed location for the device while the other used multiple locations. Both use different methods of extracting the gait data as well as well as analyzing the data, but each method works. Both of these experiments are not perfect yet but they both show promise in using walking patterns as a form of mobile security. With more sampling/testing as well as improving efficiency with algorithms will improve these mobile security methods and show potential to become implemented in a large scale. 
 %----------------------------------------------------------------------------------------------------------------------%
 
 \section{Acknowledgments}
