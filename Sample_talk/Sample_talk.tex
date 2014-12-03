@@ -80,14 +80,19 @@
   
   \begin{columns}
   \begin{column}{0.6\textwidth}
-  \begin{itemize}
-  	\item What is Mobile Security?
-  	\linebreak
-  	\linebreak
-	\item How can mobile security get better?
+  What is Mobile Security?
+     \begin{itemize}
+     \item Information Storage
+  	  \item Device Access 
+     \end{itemize}
+  How can mobile security get better?
+     \begin{itemize}
+     \item No More Passwords
+	  \item Something You Are
+	  \item Unobtrusive Access
 %	\item What is Gait Recognition?
 %	\item How is Gait Recognition useful?
-  \end{itemize}
+     \end{itemize}
   \end{column}
   \begin{column}{0.4\textwidth}
    \includegraphics[width=0.95\textwidth]{Illustrations/mobileSecurity.jpg}
@@ -106,101 +111,52 @@
 
 \section[Mobile Security]{Background}
 
-%\subsection{Why is there a need for more security?}
+\subsection{Background}
+\begin{frame}
+  \frametitle{Background}
 
-%\begin{frame}
- % \frametitle{Why is there a need for more Security?}
-%  
-%  \begin{columns}
-%  \begin{column}{.65\textwidth}
-%Same genome can lead to different physical structures or behavior depending on environmental factors.
-%
-%\linespace
-%
-%E.g., color of hornworm caterpillars depends on temperature during development. 
-%
-%\linespace
-%  
-%  Plasticity allows development to respond to environmental changes, adding flexibility.
-%  \end{column}
-%  \begin{column}{.35\textwidth}
-%    \includegraphics[width=.95\textwidth]{Illustrations/Manduca_sexta_by_Sam_Fraser-Smith_from_Flickr.jpg}
-%    \\
-%    \tiny{Sam Fraser-Smith \\ \url{http://tr.im/pq7l} }
-%  \end{column}
-%  \end{columns}
-
-%\end{frame}
-
-%\subsection{Developmental plasticity in EC}
-%
-%\begin{frame}
-%	\frametitle{Developmental plasticity in EC}
-%	
-%	Most EC systems have no (or trivial) developmental processes.
-%	\begin{itemize}
-%		\item Therefore can't have developmental plasticity
-%	\end{itemize}
-%	
-%	\linespace
-%	
-%	There are important exceptions.  In GP, e.g.:
-%	\begin{itemize}
-%		\item Cellular encoding
-%		\item Many grammar-based systems
-%		\item DTAG3P
-%	\end{itemize}
-%	
-%	\linespace 
-%	
-%	These remain, however, the exception rather than the rule.
-%	
-%	\linespace
-%	
-%	N-gram GP has natural developmental process, so a good candidate for adding developmental plasticity.
-%\end{frame}
-
-%\begin{frame}
-%	\frametitle{Generating programs with N-gram GP}
-%	
-%	\begin{columns}
-%	\begin{column}{0.45\textwidth}
-%	N-gram GP uses a \emph{probability table} to store likelihood of a triple of instructions appearing in a program:
-%	\[ Pr\{ x_i \rightarrow x_{i+1} \rightarrow x_{i+2} \}. \]
-%				
-%		Given pair of instructions $(x_i, x_{i+1})$, this table gives us the probability distribution for the subsequent instruction $x_{i+2}$.
-%	\end{column}
-%	\begin{column}{0.55\textwidth}
-%	\includegraphics[width=\textwidth]{N_gram_figures/ThreeChoices_v2.pdf}
-%	\end{column}
-%	\end{columns}
-%\end{frame}
+  \begin{columns}
+  \begin{column}{0.4\textwidth}
+  \begin{itemize}
+    \item Biometrics 
+  	\linebreak
+  	\item Gait Recognition
+  	\linebreak
+	\item Using Gait is Better
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.8\textwidth}
+   \includegraphics[width=0.8\textwidth]{Illustrations/allbiometrics.jpg}
+       %http://www.smc2012.org/images/jain3-1.jpg
+  \end{column}
+  \end{columns}
+\end{frame}
 
 
 
 \section[Preprocessing the data]{Preprocessing the data}
-%\subsection{Linear Interpolation and Zero Normalization}
-%\begin{frame}
-%  \frametitle{Linear Interpolation and Zero Normalization}
-%
-%  \begin{columns}
-%  \begin{column}{0.4\textwidth}
-%  \begin{itemize}
-%    \item Walk Extraction 
-%  	\linebreak
-%  	\item Linear Interpolation
-%  	\linebreak
-%	\item Zero Normalization 
-%  \end{itemize}
-%  \end{column}
-%  \begin{column}{0.8\textwidth}
-%   \includegraphics[width=0.8\textwidth]{Illustrations/chart1.png}
-%       \\
-%  \end{column}
-%  \end{columns}
-%\end{frame}
+
 
 \subsection{Fixed Preprocessing}
+\begin{frame}
+  \frametitle{Experiment Environment}
+  \begin{columns}
+  \begin{column}{0.4\textwidth}
+  \begin{itemize}
+    \item Phone Clipped to Waist 
+  	\linebreak
+  	\item Walked Down 18.5 Meter Hallway
+  	\linebreak
+	\item Preprocessing
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.8\textwidth}
+   \includegraphics[width=0.8\textwidth]{Illustrations/gaitpatterns.png}
+       \\
+  \end{column}
+  \end{columns}
+\end{frame}
+
 \begin{frame}
   \frametitle{Linear Interpolation and Zero Normalization}
 
@@ -215,7 +171,7 @@
   \end{itemize}
   \end{column}
   \begin{column}{0.8\textwidth}
-   \includegraphics[width=0.8\textwidth]{Illustrations/gaitpatterns.png}
+   \includegraphics[width=0.8\textwidth]{Illustrations/onegaitcycle.png}
        \\
   \end{column}
   \end{columns}
