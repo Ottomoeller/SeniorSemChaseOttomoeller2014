@@ -47,7 +47,7 @@
 
 % The text in square brackets is the short version of the date if you need that.
 \date[December '14, SS, Morris] % (optional)
-{6 December 2014 \\ Senior Seminar, Morris}
+{December 6, 2014 \\ Senior Seminar, Morris}
 
 % Delete this, if you do not want the table of contents to pop up at
 % the beginning of each subsection:
@@ -84,8 +84,10 @@
      \begin{itemize}
      \item Information Storage
   	  \item Device Access 
+  	  \linebreak
      \end{itemize}
-  How can mobile security get better?
+     
+  How is mobile security evolving?
      \begin{itemize}
      \item No More Passwords
 	  \item Something You Are
@@ -109,11 +111,15 @@
   \tableofcontents[hideallsubsections]
 \end{frame}
 
+
+
+
+
 \section[Mobile Security]{Background}
 
-\subsection{Background}
+\subsection{Biometrics}
 \begin{frame}
-  \frametitle{Background}
+  \frametitle{Biometrics}
 
   \begin{columns}
   \begin{column}{0.4\textwidth}
@@ -122,7 +128,7 @@
   	\linebreak
   	\item Gait Recognition
   	\linebreak
-	\item Using Gait is Better
+	\item Why Gait is Better
   \end{itemize}
   \end{column}
   \begin{column}{0.8\textwidth}
@@ -132,22 +138,14 @@
   \end{columns}
 \end{frame}
 
-
-
-\section[Preprocessing the data]{Preprocessing the data}
-
-
-\subsection{Fixed Preprocessing}
 \begin{frame}
-  \frametitle{Experiment Environment}
+  \frametitle{Fixed Method Approach}
   \begin{columns}
   \begin{column}{0.4\textwidth}
   \begin{itemize}
     \item Phone Clipped to Waist 
   	\linebreak
   	\item Walked Down 18.5 Meter Hallway
-  	\linebreak
-	\item Preprocessing
   \end{itemize}
   \end{column}
   \begin{column}{0.8\textwidth}
@@ -158,6 +156,34 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Unfixed Method Approach}
+
+  \begin{columns}
+  \begin{column}{0.6\textwidth}
+  \begin{itemize}
+    \item Phone in more natural location (pocket, handbag, backpack)
+  	\linebreak
+  	\item Experiment done in real-world environments
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.7\textwidth}
+   \includegraphics[width=0.6\textwidth]{Illustrations/Framing.png}
+       %http://www.smc2012.org/images/jain3-1.jpg
+  \end{column}
+  \end{columns}
+\end{frame}
+
+
+
+
+
+\section[Preprocessing the data]{Preprocessing the data}
+
+
+\subsection{Fixed Preprocessing}
+
+
+\begin{frame}
   \frametitle{Linear Interpolation and Zero Normalization}
 
   \begin{columns}
@@ -165,7 +191,7 @@
   \begin{itemize}
     \item Walk Extraction 
   	\linebreak
-  	\item Linear Interpolation
+  	\item Linear Interpolation (cure fitting)
   	\linebreak
 	\item Zero Normalization 
   \end{itemize}
@@ -179,183 +205,343 @@
 
 \subsection{Unfixed Preprocessing}
 \begin{frame}
-  \frametitle{Framing and Projection}
+  \frametitle{Unfixed Method Overview}
   \begin{columns}
-  \begin{column}{0.25\textwidth}
+  \begin{column}{1\textwidth}
   \begin{itemize}
-  	\item Framing
-  	\linebreak
-	\item Projection
+  
+  	\item Three Experiments:
+ 	\begin{itemize}
+ 		\item Training Walking Detector
+ 		\linebreak
+ 		\item Evaluating Supervised Training Data
+ 		\linebreak
+ 		\item Unsupervised Training
+ 	\end{itemize}
+ 	
   \end{itemize}
   \end{column}
   \begin{column}{0.7\textwidth}
-   \includegraphics[width=0.7\textwidth]{Illustrations/ab.png}
+   %\includegraphics[width=0.7\textwidth]{Illustrations/ab.png}
+       
+  \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Framing}
+  \begin{columns}
+  \begin{column}{0.65\textwidth}
+  \begin{itemize}
+  	\item Framing
+  	\begin{itemize}
+  		\item Separating Data into Equal Sections    
+  		\linebreak
+  		\item Frame Length: 5.12 seconds       
+  		\linebreak
+  		\item Each Frame contains 512 Samples                 
+  	\end{itemize}
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.6\textwidth}
+   \includegraphics[width=0.6\textwidth]{Illustrations/rawgaitdata.png}
        \\
   \end{column}
   \end{columns}
 \end{frame}
 
-\section[Gait Extraction]{Feature Extraction}
-%\begin{frame}
-	
-%\end{frame}
-\section[Gait Analysis]{Analyzing Gait data}
-%\begin{frame}
-	
-%\end{frame}
-%\section[Results]{Results}
-%
-%\subsection[Empirical results]{Empirical comparison of IFD, N-gram GP, and standard GP}
-%
-%\begin{frame}
-%  \frametitle{Empirical comparison of IFD, N-gram GP, \& TinyGP}
-%  
-%  \begin{columns}[t]
-%  \begin{column}{0.45\textwidth}
-%  Compare IFD, regular N-gram GP, and standard sub-tree XO GP (TinyGP)
-%  \linespace
-%  \begin{itemize}
-%	\item 11 different symbolic regression problems
-%	\item 100 independent runs for each system + problem + parameter set
-%	\item Various parameter settings (e.g., different block sizes)
-%  \end{itemize}
-%  \end{column}
-%
-%  \begin{column}{0.45\textwidth}
-%  2 register machine with $+, -, \times$, protected division, and swap
-%  
-%  \linespace
-%  
-%  Normalize the clock:
-%  \begin{itemize}
-%  	\item Count instruction executions
-%	\item Allow 50M instruction evaluations per run
-%	\item Store machine state so only new block has to be executed in IFD
-%  \end{itemize}
-%  
-%  \end{column}
-%  \end{columns}
-%\end{frame}
-%
-%\begin{frame}
-%  \frametitle{Success rates on 11 test problems}
-%  
-%\begin{center}
-%\begin{tabular}{llrrr}
-%	& & \multicolumn{3}{c}{\emph{Successes out of 100 runs}} \\
-%	\textbf{Label} & \textbf{Function} & \textbf{TinyGP} & \textbf{N-gram} & \textbf{IFD} \\ \hline
-%	\tabletie{P1} & \tabletie{$x + x^2 + x^3 + x^4 + x^5$} & \tabletie{100} & \tabletie{100} & \tabletie{100} \\
-%	\tabletie{P2} & \tabletie{$-x-2x^2+x^3$} & \tabletie{100} & \tabletie{100} & \tabletie{100} \\
-%	P3 & $1.009 + 1.419x + x^2$ & \tablewin{100} & \tablelose{61} & \tablewin{100} \\
-%	\tabletie{P4} & \tabletie{$6+x^2+3x^3+8x^5$} & \tabletie{0} & \tabletie{0} & \tabletie{0} \\ \hline
-%	\tabletie{P5} & \tabletie{$6$} & \tabletie{100} & \tabletie{100} & \tabletie{100} \\ % P4d0f
-%	P6 & $6+x^2$ & \tablewin{100} & \tablelose{10} & \tablewin{94} \\ % P4d2f
-%	P7 & $6 + x^2 + 3 x^3$ & \tablewin{85} & \tablelose{0} & \tablelose{1} \\ \hline % P4d3f
-%	\tabletie{P8} & \tabletie{$8x^5$} & \tabletie{100} & \tabletie{100} & \tabletie{100} \\ % P4d5b
-%	P9 & $3x^3+8x^5$ & \tablelose{22} & \tablemid{55} & \tablewin{100} \\ % P4d3b
-%	P10 & $x^2+3x^3+8x^5$ & \tablewin{100} & \tablelose{7} & \tablemid{80} \\ \hline % P4d2b
-%	Sine & $sin(x)$ & \tablelose{0} & \tablelose{1} & \tablewin{63} \\ \hline
-%\end{tabular}
-%\end{center}
-%\end{frame}
-%
-%\begin{frame}
-%\frametitle{IFD wins either way}
-%
-%\begin{columns}
-%\begin{column}{0.6\textwidth}
-%
-%\begin{itemize}
-%	\item IFD generates low-error individuals from tables evolved with IFD \textbf{and without IFD}.
-%	\linespace
-%	\item IFD's local search is valuable in all phases of the process, even if it wasn't used previously.
-%	\linespace
-%	\item N-gram GP isn't able to work effectively with the more complex probability tables that IFD generates.
-%\end{itemize}
-%\end{column}
-%
-%\begin{column}{0.02\textwidth}
-%\end{column}
-%
-%\begin{column}{0.5\textwidth}
-%
-%\includegraphics[width=0.915\textwidth]{ErrorsGenedProgsFromIfdMatrix.pdf}
-%
-%\includegraphics[width=0.915\textwidth]{ErrorsGenedProgsFromNonIfdMatrix.pdf}
-%
-%\end{column}
-%\end{columns}
-%
-%\end{frame}
-%
-%\subsection[Modularity]{Modularity and repeated structures in IFD}
-%
-%\begin{frame}
-%  \frametitle{Structural differences and modularity}
-%  
-%  Standard N-gram GP tends to converge to a small set of loops with high probability edges.
-%
-%  \begin{center}
-%  \includegraphics[width=0.8\textwidth]{duplication_graph_40068231_trimmed_smallNodes_coloredEdges_crop.pdf}
-%  \end{center}
-%  
-%      With IFD there is less convergence, more variety and complexity in the modular structure, \& greater use of low probability edges.
-%  
-%  \begin{center}
-%    \includegraphics[width=\textwidth]{duplication_graph_12454239_trimmed_smallNodes_coloredEdges_crop.pdf}
-%    \end{center}
-%
-%\end{frame}
+\begin{frame}
+  \frametitle{Projection}
+  \begin{columns}
+  \begin{column}{.6\textwidth}
+  \begin{itemize}
+  	\item Framing
+  	\begin{itemize}
+  		\item Each sample is projected onto a global coordinate system. a = (x, y, z)
+  		\linebreak
+  		\item  Each a is projected into a vertical, and horizontal vector
+  		\linebreak
+  		\item Estimate Direction of Gravity
+  		\linebreak
+  		\item Not all frames will be used 
+  	\end{itemize}
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.6\textwidth}
+   \includegraphics[width=0.6\textwidth]{Illustrations/rawgaitdata.png}
+       \\
+  \end{column}
+  \end{columns}
+\end{frame}
 
-\section[Results]{Results}
+
+
+
+\section[Gait Extraction]{Feature Extraction}
+
+\begin{frame}
+  \frametitle{Fixed Method Feature Extraction}
+  \begin{columns}
+  \begin{column}{.5\textwidth}
+  \begin{itemize}
+  	\item Four Steps:
+  	\begin{itemize}
+  		\item Cycle Length Estimation
+  		\linebreak
+  		\item Cycle Detection
+  		\linebreak
+  		\item Cycle length normalization
+  		\linebreak
+  		\item Omitting Unusual Cycles
+  	\end{itemize}
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.6\textwidth}
+   %\includegraphics[width=0.6\textwidth]{Illustrations/rawgaitdata.png}
+       \\
+  \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Cycle Length Estimation}
+  \begin{columns}
+  \begin{column}{.5\textwidth}
+  \begin{itemize}
+  	\item Detect start gait cycles with Salience Vectors
+  	\item Distance Between Data Points
+  	\item Minimum and Maximum Salience Vector
+  \end{itemize}
+  \end{column}
+    \begin{column}{0.7\textwidth}
+   \includegraphics[width=0.8\textwidth]{Illustrations/svector.png}
+       \\
+  \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Cycle Detection}
+  \begin{columns}
+  \begin{column}{.5\textwidth}
+  \begin{itemize}
+  	\item Detecting Individual Cycles
+  	\item Start of each cycle is based on the minimum salience vector
+  	\item Spike around points 750, 1150, 1450, 1650 
+  	\item Long cycles are split again using the same method
+  \end{itemize}
+  \end{column}
+    \begin{column}{0.7\textwidth}
+   \includegraphics[width=0.8\textwidth]{Illustrations/svector.png}
+       \\
+  \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Cycle Length Normalization}
+  \begin{columns}
+  \begin{column}{.6\textwidth}
+  \begin{itemize}
+  	\item The distance of each cycle is measured from the start of one cycle to the start of the following. 
+  	\linebreak
+  	\item Cycles need to be of a set length for later Gait Analysis
+  	\linebreak
+  	\item Linear Interpolation 
+  \end{itemize}
+  \end{column}
+    \begin{column}{0.6\textwidth}
+   %\includegraphics[width=0.6\textwidth]{Illustrations/rawgaitdata.png}
+       \\
+  \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Omitting Unusual Cycles}
+  \begin{columns}
+  \begin{column}{.7\textwidth}
+  \begin{itemize}
+  	\item Unusual Gait Cycles
+  	\linebreak
+  	\item Dynamic Time Warping (DTW): an algorithm used to measure similarity between two sequences
+  	\linebreak
+  	\item Cycles with an acceleration half that of the average are dropped
+  \end{itemize}
+  \end{column}
+    \begin{column}{0.5\textwidth}
+   %\includegraphics[width=0.6\textwidth]{Illustrations/rawgaitdata.png}
+       \\
+  \end{column}
+  \end{columns}
+\end{frame}
+
+%////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\begin{frame}
+\frametitle{Feature Extraction I}
+	\begin{itemize}
+		\item Frequency Domain using Spectrum Analysis
+		\linebreak
+		\item Walking 1-2Hz vs Running >3Hz 
+		\linebreak
+		\item These features are used in the next step
+		
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Walking Detection}
+	\begin{itemize}
+		\item Three classifications using a decision tree:
+			\begin{itemize}
+				\item Walking: 1-2Hz
+				\linebreak
+				\item Non-Walking: >3Hz (running, biking, in moving vehicle)
+				\linebreak
+				\item Random Movements: >0Hz (transitional movements, short spikes)
+			\end{itemize}
+		
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Feature Extraction II}
+	\begin{itemize}
+		\item Once Walking Detection confirms that the frame contains walking data, more relevant features are extracted for data.
+		\item Two sets of features extracted:
+		\begin{itemize}
+			\item Fundamental Frequency of Movement
+			\item Autocorrelation Features
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Fundamental Frequencies}
+	\begin{itemize}
+		\item This first set of features computed in this stage is the Compressed Sub-band Cepstral Coefficients (CSCC) 
+		\item CSCC based of off feature set for audio analysis.
+		\item CSCC evolves 3 steps:
+		\begin{itemize}
+			\item[1)] The energy spectrum is computed using the Fast Fourier Transform (FFT)
+			\item[2)] Then the energy spectrum is mapped into 26 bands
+			\item[3)] The discrete cosine transform of the sub-band energy is taken to form a 12-dimension vector representation
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Fundamental Frequencies}
+ \begin{columns}
+  \begin{column}{.5\textwidth}
+  \begin{itemize}
+		\item The second set of features are computed by Autocorrelation 
+		\item Useful to find periodicity and cadence of the gait
+		\item Used instead of segmentation because the unfixed position of the phone creates noise
+		\item CSCC features are extracted form the autocorrelation to summarize the shape and structure of the frame
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.7\textwidth}
+   \includegraphics[width=0.7\textwidth]{Illustrations/autocorrelation.png}
+       \\
+  \end{column}
+  \end{columns}  
+  
+\end{frame}
+%/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\section[Gait Analysis]{Gait Classification}
+
+\begin{frame}
+\frametitle{Gait Classification}
+ \begin{columns}
+  \begin{column}{.5\textwidth}
+  \begin{itemize}
+		\item Fixed Method Gait Classification
+			\begin{itemize}
+				\item Template-based 
+				\item Machine Learning 
+			\end{itemize}
+		\item Fixed Method Gait Classification
+			\begin{itemize}
+				\item Gausian Mixture Model-Universal Background Model
+			\end{itemize}
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.7\textwidth}
+   %includegraphics[width=0.7\textwidth]{Illustrations/autocorrelation.png}
+       \\
+  \end{column}
+  \end{columns}  
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Template-based}
+ \begin{columns}
+  \begin{column}{.5\textwidth}
+  \begin{itemize}
+		\item Feature Cycle (the best cycle with the lowest DTW distance)
+		\item Probe Cycles (the remaining cycles)
+		\item Two classes are made:genuine and imposter
+		\item 50\% of the Prove cycles must vote genuine		
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.7\textwidth}
+   %\includegraphics[width=0.7\textwidth]{Illustrations/autocorrelation.png}
+       \\
+  \end{column}
+  \end{columns}  
+\end{frame}
+
+\begin{frame}
+\frametitle{Machine Learning}
+ \begin{columns}
+  \begin{column}{.5\textwidth}
+  \begin{itemize}
+		\item Extracted gait cycles are split into two groups: 80\% go into a training set, 20\% go into a testing data set
+		\item The DTW distance matrix is computed from the training data set
+		\item DTW distance matrix is used by a kernel function. This makes the data linearly separable.
+		\item A hyperplane is used to separate the data into two classes: genuine and imposter
+		\item The class with the most votes is what the testing data is labeled as
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.7\textwidth}
+   %\includegraphics[width=0.7\textwidth]{Illustrations/autocorrelation.png}
+       \\
+  \end{column}
+  \end{columns}  
+\end{frame}
+
+ \begin{frame}
+\frametitle{Machine Learning}
+ \begin{columns}
+  \begin{column}{.7\textwidth}
+  \begin{itemize}
+		\item UBM Training large source of data
+		\item Users gait model is generated relating the odds of one event to the odds of another
+		\item Maximum-a-Posteriori (MAP) is used to adjust Gaussian components and mixture weight to personalize the UBM model
+		\item MAP is also used by recording false negatives
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.7\textwidth}
+   %\includegraphics[width=0.7\textwidth]{Illustrations/autocorrelation.png}
+       \\
+  \end{column}
+  \end{columns}  
+\end{frame}
+
 
 \begin{frame}
 \frametitle{Conclusions}
-%
-%\begin{itemize}
-%  \item Added developmental plasticity to N-gram GP using Incremental Fitness-based Development (IFD).
-%\end{itemize}
-%
-%\begin{itemize}
-%  \item IFD consistently improved N-gram GP performance on suite of test problems.
-%  
-%  \linespace
-%  
-%  \item ``Knocking out'' IFD shows it's valuable in all phases, even if it wasn't used earlier in a run.
-%
-%  \linespace
-%  
-%  \item IFD generates more complex, less converged probability tables.
-%  \item IFD generates more modules/loops \& uses more low-probability paths.
-%\end{itemize}
-%
-%\begin{itemize}
-%  \item Currently exploring applications to dynamic environments.
-%\end{itemize}
-%
-%\end{frame}
-%
-%\begin{frame}
-%	\frametitle{Thanks!}
-%	
-%	Thank you for your time and attention!
-%		
-%	\linespace
-%	\linespace
-%	
-%	Contact:  
-%	\begin{itemize}
-%		\item \texttt{mcphee@morris.umn.edu}
-%		\item \url{http://www.morris.umn.edu/~mcphee/}
-%	\end{itemize}
-%	
-%	\linespace
-%	\linespace
-%	
-%	\begin{center}
-%	{\huge Questions?}
-%	\end{center}
+	
+	
 \end{frame}
+
+
+\section[Results]{Results}
+
+
 
 \section*{References}
 
