@@ -138,6 +138,8 @@
   \end{columns}
 \end{frame}
 
+\subsection{Two Methods}
+\subsection{}
 \begin{frame}
   \frametitle{Fixed Method Approach}
   \begin{columns}
@@ -146,6 +148,8 @@
     \item Phone Clipped to Waist 
   	\linebreak
   	\item Walked Down 18.5 Meter Hallway
+  	\linebreak
+  	\item Separated into "Walks"
   \end{itemize}
   \end{column}
   \begin{column}{0.8\textwidth}
@@ -155,6 +159,7 @@
   \end{columns}
 \end{frame}
 
+\subsection{}
 \begin{frame}
   \frametitle{Unfixed Method Approach}
 
@@ -163,11 +168,13 @@
   \begin{itemize}
     \item Phone in more natural location (pocket, handbag, backpack)
   	\linebreak
-  	\item Experiment done in real-world environments
+  	\item Performed in Real-world Environments
+  	\linebreak
+  	\item Separated Into Frames
   \end{itemize}
   \end{column}
   \begin{column}{0.7\textwidth}
-   \includegraphics[width=0.6\textwidth]{Illustrations/Framing.png}
+   \includegraphics[width=0.6\textwidth]{Illustrations/frame.jpg}
        %http://www.smc2012.org/images/jain3-1.jpg
   \end{column}
   \end{columns}
@@ -177,108 +184,158 @@
 
 
 
-\section[Preprocessing the data]{Preprocessing the data}
+\section[Preprocessing the data]{Preprocessing The Data}
 
+\subsection{What is Preprocessing?}
+\begin{frame}
+  \frametitle{Preprocessing}
 
-\subsection{Fixed Preprocessing}
+  \begin{columns}
+  \begin{column}{0.5\textwidth}
+  \begin{itemize}
+    \item Separates walking data from other noise
+    \linebreak
+    \item Walks VS Frames
+  \end{itemize}
+  \end{column}
 
+\begin{column}{0.02\textwidth}
+\end{column}
 
+\begin{column}{0.5\textwidth}
+
+\includegraphics[width=0.91\textwidth]{Illustrations/preprocessingexample.png}
+
+\includegraphics[width=0.91\textwidth]{Illustrations/frame.jpg}
+
+\end{column}  
+  
+  
+  \end{columns}
+\end{frame}
+
+\subsection{Fixed Method Preprocessing}
 \begin{frame}
   \frametitle{Linear Interpolation and Zero Normalization}
-
   \begin{columns}
   \begin{column}{0.4\textwidth}
   \begin{itemize}
     \item Walk Extraction 
   	\linebreak
-  	\item Linear Interpolation (cure fitting)
+  	\item Linear Interpolation (curve fitting)
   	\linebreak
 	\item Zero Normalization 
   \end{itemize}
-  \end{column}
-  \begin{column}{0.8\textwidth}
-   \includegraphics[width=0.8\textwidth]{Illustrations/onegaitcycle.png}
-       \\
-  \end{column}
-  \end{columns}
-\end{frame}
-
-\subsection{Unfixed Preprocessing}
-\begin{frame}
-  \frametitle{Unfixed Method Overview}
-  \begin{columns}
-  \begin{column}{1\textwidth}
-  \begin{itemize}
+  \end{column}  
   
-  	\item Three Experiments:
- 	\begin{itemize}
- 		\item Training Walking Detector
- 		\linebreak
- 		\item Evaluating Supervised Training Data
- 		\linebreak
- 		\item Unsupervised Training
- 	\end{itemize}
- 	
-  \end{itemize}
-  \end{column}
-  \begin{column}{0.7\textwidth}
-   %\includegraphics[width=0.7\textwidth]{Illustrations/ab.png}
-       
-  \end{column}
+\begin{column}{0.5\textwidth}
+
+\includegraphics[width=0.91\textwidth]{Illustrations/onegaitcycle.png}
+
+\includegraphics[width=0.91\textwidth]{Illustrations/linear.png}
+
+\end{column}   
+  
   \end{columns}
 \end{frame}
 
+%\subsection{Unfixed Preprocessing}
+%\begin{frame}
+%  \frametitle{Unfixed Method Overview}
+%  \begin{columns}
+%  \begin{column}{1\textwidth}
+%  \begin{itemize}
+%  
+%  	\item Three Experiments:
+% 	\begin{itemize}
+% 		\item Training Walking Detector
+% 		\linebreak
+% 		\item Evaluating Supervised Training Data
+% 		\linebreak
+% 		\item Unsupervised Training
+% 	\end{itemize}
+% 	
+%  \end{itemize}
+%  \end{column}
+%  \begin{column}{0.7\textwidth}
+%   %\includegraphics[width=0.7\textwidth]{Illustrations/ab.png}  
+%  \end{column}
+%  \end{columns}
+%\end{frame}
+\subsection{Unfixed Method Preprocessing}
 \begin{frame}
   \frametitle{Framing}
   \begin{columns}
   \begin{column}{0.65\textwidth}
-  \begin{itemize}
-  	\item Framing
   	\begin{itemize}
   		\item Separating Data into Equal Sections    
   		\linebreak
   		\item Frame Length: 5.12 seconds       
   		\linebreak
-  		\item Each Frame contains 512 Samples                 
+  		\item Each Frame contains 512 Samples
+  		\linebreak
+  		\item Stationary frames are dropped                
   	\end{itemize}
-  \end{itemize}
   \end{column}
   \begin{column}{0.6\textwidth}
-   \includegraphics[width=0.6\textwidth]{Illustrations/rawgaitdata.png}
+   \includegraphics[width=0.6\textwidth]{Illustrations/frame.jpg}
        \\
   \end{column}
+  
   \end{columns}
 \end{frame}
 
 \begin{frame}
   \frametitle{Projection}
   \begin{columns}
-  \begin{column}{.6\textwidth}
-  \begin{itemize}
-  	\item Framing
+  \begin{column}{.7\textwidth}
+  
   	\begin{itemize}
-  		\item Each sample is projected onto a global coordinate system. a = (x, y, z)
+  		\item Each sample is projected onto a global coordinate system (sample = {x, y, and z})
   		\linebreak
-  		\item  Each a is projected into a vertical, and horizontal vector
+  		\item Estimating direction of gravity with changes in x, y, and z. 
   		\linebreak
-  		\item Estimate Direction of Gravity
-  		\linebreak
-  		\item Not all frames will be used 
+  		\item Each sample is split into two vectors: 
+  			\begin{itemize}
+  				\item Vertical (x)
+  				\item Horizontal (y, z)
+  				\linebreak
+			\end{itemize}
+  		\item Frame dropped if orientation is changed  
   	\end{itemize}
-  \end{itemize}
+  
   \end{column}
-  \begin{column}{0.6\textwidth}
-   \includegraphics[width=0.6\textwidth]{Illustrations/rawgaitdata.png}
+  
+  \begin{column}{0.7\textwidth}
+   \includegraphics[width=0.5\textwidth]{Illustrations/global.jpg}
        \\
   \end{column}
+  
   \end{columns}
 \end{frame}
 
 
 
 
-\section[Gait Extraction]{Feature Extraction}
+\section[Feature Extraction]{Feature Extraction}
 
+\subsection{What is Feature Extraction?}
+\begin{frame}
+  \frametitle{What is Feature Extraction?}
+  \begin{columns}
+  \begin{column}{.9\textwidth}
+  \begin{itemize}
+  	\item Feature extraction separates "walking" cycles from "non-walking" cycles
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.6\textwidth}
+   %\includegraphics[width=0.6\textwidth]{Illustrations/rawgaitdata.png}
+       \\
+  \end{column}
+  \end{columns}
+\end{frame}
+
+\subsection{Fixed Method Feature Extraction}
 \begin{frame}
   \frametitle{Fixed Method Feature Extraction}
   \begin{columns}
@@ -308,9 +365,13 @@
   \begin{columns}
   \begin{column}{.5\textwidth}
   \begin{itemize}
-  	\item Detect start gait cycles with Salience Vectors
-  	\item Distance Between Data Points
-  	\item Minimum and Maximum Salience Vector
+  	\item Estimate cycle lengths by computing Minimum Salience Vectors
+  	\linebreak
+  	\item Minimum Salience Vector
+  		\begin{itemize}
+  			\item Contains one entry for each data point
+  			\item Each entry is the count of data values between the current value and following smaller value
+  		\end{itemize}
   \end{itemize}
   \end{column}
     \begin{column}{0.7\textwidth}
@@ -326,7 +387,7 @@
   \begin{column}{.5\textwidth}
   \begin{itemize}
   	\item Detecting Individual Cycles
-  	\item Start of each cycle is based on the minimum salience vector
+  	\item Start of each cycle is located using the entry with the greatest value
   	\item Spike around points 750, 1150, 1450, 1650 
   	\item Long cycles are split again using the same method
   \end{itemize}
@@ -341,7 +402,7 @@
 \begin{frame}
   \frametitle{Cycle Length Normalization}
   \begin{columns}
-  \begin{column}{.6\textwidth}
+  \begin{column}{.55\textwidth}
   \begin{itemize}
   	\item The distance of each cycle is measured from the start of one cycle to the start of the following. 
   	\linebreak
@@ -350,8 +411,8 @@
   	\item Linear Interpolation 
   \end{itemize}
   \end{column}
-    \begin{column}{0.6\textwidth}
-   %\includegraphics[width=0.6\textwidth]{Illustrations/rawgaitdata.png}
+    \begin{column}{0.7\textwidth}
+   \includegraphics[width=0.7\textwidth]{Illustrations/nonnormalized.png}
        \\
   \end{column}
   \end{columns}
@@ -360,31 +421,57 @@
 \begin{frame}
   \frametitle{Omitting Unusual Cycles}
   \begin{columns}
-  \begin{column}{.7\textwidth}
+  \begin{column}{.5\textwidth}
   \begin{itemize}
-  	\item Unusual Gait Cycles
+  	\item Deleting Unusual Gait Cycles
   	\linebreak
-  	\item Dynamic Time Warping (DTW): an algorithm used to measure similarity between two sequences
+  	\item Dynamic Time Warping (DTW): An algorithm used to measure similarity between two sequences
   	\linebreak
   	\item Cycles with an acceleration half that of the average are dropped
   \end{itemize}
   \end{column}
-    \begin{column}{0.5\textwidth}
-   %\includegraphics[width=0.6\textwidth]{Illustrations/rawgaitdata.png}
+    \begin{column}{0.6\textwidth}
+   \includegraphics[width=0.9\textwidth]{Illustrations/DTW.jpg}
        \\
   \end{column}
   \end{columns}
 \end{frame}
 
 %////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\subsection{Unfixed Feature Extraction}
+
+\begin{frame}
+  \frametitle{Unfixed Method Feature Extraction}
+  \begin{columns}
+  \begin{column}{.5\textwidth}
+  \begin{itemize}
+  	\item Three Steps:
+  	\begin{itemize}
+  		\item Feature Extraction I
+  		\linebreak
+  		\item Walking Detection
+  		\linebreak
+  		\item Feature Extraction II
+  	\end{itemize}
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.6\textwidth}
+   %\includegraphics[width=0.6\textwidth]{Illustrations/rawgaitdata.png}
+       \\
+  \end{column}
+  \end{columns}
+\end{frame}
+
+
+
 \begin{frame}
 \frametitle{Feature Extraction I}
 	\begin{itemize}
-		\item Frequency Domain using Spectrum Analysis
+		\item Determine differences between "walking" and "non-walking"
 		\linebreak
 		\item Walking 1-2Hz vs Running >3Hz 
 		\linebreak
-		\item These features are used in the next step
+		\item These features are used in Walking Detection
 		
 	\end{itemize}
 	
@@ -400,50 +487,62 @@
 				\item Non-Walking: >3Hz (running, biking, in moving vehicle)
 				\linebreak
 				\item Random Movements: >0Hz (transitional movements, short spikes)
+				\linebreak
 			\end{itemize}
-		
+			
+		\item Cycles labeled as walking move onto the next step
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Feature Extraction II}
 	\begin{itemize}
-		\item Once Walking Detection confirms that the frame contains walking data, more relevant features are extracted for data.
-		\item Two sets of features extracted:
-		\begin{itemize}
-			\item Fundamental Frequency of Movement
-			\item Autocorrelation Features
-		\end{itemize}
+		\item Once Walking Detection confirms that the frame contains walking data, more relevant features are extracted
+		\linebreak
+		
+		\item Some features extracted using Autocorrelation
+		
+		
+%		\item Two sets of features extracted:
+%		
+%		\begin{itemize}
+%			\item Fundamental Frequency of Movement
+%			\item Autocorrelation Features
+%		\end{itemize}
+
+
+
 	\end{itemize}
 \end{frame}
 
-\begin{frame}
-\frametitle{Fundamental Frequencies}
-	\begin{itemize}
-		\item This first set of features computed in this stage is the Compressed Sub-band Cepstral Coefficients (CSCC) 
-		\item CSCC based of off feature set for audio analysis.
-		\item CSCC evolves 3 steps:
-		\begin{itemize}
-			\item[1)] The energy spectrum is computed using the Fast Fourier Transform (FFT)
-			\item[2)] Then the energy spectrum is mapped into 26 bands
-			\item[3)] The discrete cosine transform of the sub-band energy is taken to form a 12-dimension vector representation
-		\end{itemize}
-	\end{itemize}
-\end{frame}
+%\begin{frame}
+%\frametitle{Fundamental Frequencies}
+%	\begin{itemize}
+%		\item This first set of features computed in this stage is the Compressed Sub-band Cepstral Coefficients (CSCC) 
+%		\item CSCC based of off feature set for audio analysis.
+%		\item CSCC evolves 3 steps:
+%		\begin{itemize}
+%			\item[1)] The energy spectrum is computed using the Fast Fourier Transform (FFT)
+%			\item[2)] Then the energy spectrum is mapped into 26 bands
+%			\item[3)] The discrete cosine transform of the sub-band energy is taken to form a 12-dimension vector representation
+%		\end{itemize}
+%	\end{itemize}
+%\end{frame}
 
 \begin{frame}
-\frametitle{Fundamental Frequencies}
+\frametitle{Autocorrelation}
  \begin{columns}
-  \begin{column}{.5\textwidth}
+  \begin{column}{.6\textwidth}
   \begin{itemize}
-		\item The second set of features are computed by Autocorrelation 
 		\item Useful to find periodicity and cadence of the gait
-		\item Used instead of segmentation because the unfixed position of the phone creates noise
-		\item CSCC features are extracted form the autocorrelation to summarize the shape and structure of the frame
+		\item Collecting data from a phone inside a pocket
+		\item Jostling of the phone can create spikes
+		\item Segmentation, like minimum salience vectors, cannot be used
+		\item Autocorrelation can reveal features even with noise
   \end{itemize}
   \end{column}
-  \begin{column}{0.7\textwidth}
-   \includegraphics[width=0.7\textwidth]{Illustrations/autocorrelation.png}
+  \begin{column}{0.65\textwidth}
+   \includegraphics[width=0.6\textwidth]{Illustrations/autocorrelationcd.png}
        \\
   \end{column}
   \end{columns}  
@@ -452,17 +551,22 @@
 %/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 \section[Gait Analysis]{Gait Classification}
 
+\subsection{Overview}
 \begin{frame}
-\frametitle{Gait Classification}
+\frametitle{What is Gait Classification?}
  \begin{columns}
-  \begin{column}{.5\textwidth}
+  \begin{column}{.9\textwidth}
   \begin{itemize}
+  		\item Gait Classification determines if the user is "genuine" or an "impostor"
+  		\linebreak
 		\item Fixed Method Gait Classification
 			\begin{itemize}
 				\item Template-based 
 				\item Machine Learning 
+				\linebreak
 			\end{itemize}
-		\item Fixed Method Gait Classification
+			
+		\item Unfixed Method Gait Classification
 			\begin{itemize}
 				\item Gausian Mixture Model-Universal Background Model
 			\end{itemize}
@@ -475,16 +579,26 @@
   \end{columns}  
 \end{frame}
 
-
+\subsection{Fixed Method Gait Classification}
 \begin{frame}
 \frametitle{Template-based}
  \begin{columns}
-  \begin{column}{.5\textwidth}
+  \begin{column}{.8\textwidth}
   \begin{itemize}
-		\item Feature Cycle (the best cycle with the lowest DTW distance)
+		\item Feature Cycle (the cycle with the lowest DTW distance)
+		\linebreak
 		\item Probe Cycles (the remaining cycles)
-		\item Two classes are made:genuine and imposter
-		\item 50\% of the Prove cycles must vote genuine		
+		\linebreak
+		\item After computing probe and reference cycles for all walks two classes are made:
+			\begin{itemize}
+			\item Genuine
+			\item Impostor
+			\linebreak
+			\end{itemize}
+		
+		\item Genuine and Impostor are made by comparing the DTW distance of all the reference and probe cycles					
+		\linebreak
+		\item 50\% of the Probe cycles must vote genuine		
   \end{itemize}
   \end{column}
   \begin{column}{0.7\textwidth}
@@ -497,13 +611,15 @@
 \begin{frame}
 \frametitle{Machine Learning}
  \begin{columns}
-  \begin{column}{.5\textwidth}
+  \begin{column}{.8\textwidth}
   \begin{itemize}
-		\item Extracted gait cycles are split into two groups: 80\% go into a training set, 20\% go into a testing data set
-		\item The DTW distance matrix is computed from the training data set
-		\item DTW distance matrix is used by a kernel function. This makes the data linearly separable.
-		\item A hyperplane is used to separate the data into two classes: genuine and imposter
-		\item The class with the most votes is what the testing data is labeled as
+  		\item Data is split into two groups:
+  			\begin{itemize}
+  				\item Training (80\%)
+  				\item Testing (20\%)
+  			\end{itemize}
+		\item Support Vector Machines (SVMs) are used for biometric classification
+		\item A SVM finds a hyperplane that linearly separates data into two classes: genuine and impostor
   \end{itemize}
   \end{column}
   \begin{column}{0.7\textwidth}
@@ -513,33 +629,62 @@
   \end{columns}  
 \end{frame}
 
- \begin{frame}
+\begin{frame}
 \frametitle{Machine Learning}
  \begin{columns}
-  \begin{column}{.7\textwidth}
+  \begin{column}{.6\textwidth}
   \begin{itemize}
-		\item UBM Training large source of data
-		\item Users gait model is generated relating the odds of one event to the odds of another
+  		\item The data is not usually linearly separable. Therefore, a kernel function is used.
+		\item A kernel function maps non linearly separable data to a high dimension space. 
+		\item These data points are now compared to the Testing data set. Again, the class with the maximum votes wins.
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.6\textwidth}
+   \includegraphics[width=0.6\textwidth]{Illustrations/svm.jpg}
+       \\
+  \end{column}
+  \end{columns}  
+\end{frame}
+
+\subsection{Unfixed Method Gait Classification}
+ \begin{frame}
+\frametitle{Unfixed Method }
+ \begin{columns}
+  \begin{column}{.9\textwidth}
+  \begin{itemize}
+  		\item The use of more than one training model is used to help classify gait cycles
+  		
+		\item Universal Background Model (UBM) is used to train a large source of data
+	
+		\item User's gait model is generated relating the odds of one event to the odds of another
+		
 		\item Maximum-a-Posteriori (MAP) is used to adjust Gaussian components and mixture weight to personalize the UBM model
+		
+		\item The current user's gait cycle is compared to the personalized UBM model and either accepts or rejects.
+
 		\item MAP is also used by recording false negatives
   \end{itemize}
   \end{column}
-  \begin{column}{0.7\textwidth}
+  \begin{column}{0.2\textwidth}
    %\includegraphics[width=0.7\textwidth]{Illustrations/autocorrelation.png}
        \\
   \end{column}
   \end{columns}  
 \end{frame}
 
-
+\section[Conclusion]{Conclusion}
 \begin{frame}
 \frametitle{Conclusions}
-	
+	\begin{itemize}
+		\item The unfixed method is developed more and is better for real-life situations
+		\linebreak
+		\item Given time, the fixed method can perform just as well as the unfixed method
+	\end{itemize}
 	
 \end{frame}
 
 
-\section[Results]{Results}
+
 
 
 
