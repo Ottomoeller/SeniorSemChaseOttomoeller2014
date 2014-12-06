@@ -98,7 +98,7 @@
   \begin{column}{0.4\textwidth}
    \includegraphics[width=0.95\textwidth]{Illustrations/mobileSecurity.jpg}
        \\
-%    \only{\tiny{Bluedrakon \\ \url{http://mobilebuzz.guru/wp-content/uploads/2014/06/Mobile-Security.png} }}
+    \only{\tiny{ http://mobilebuzz.guru/wp-content/uploads/2014/06/Mobile-Security.png} }
   \end{column}
   \end{columns}
 \end{frame}
@@ -134,7 +134,7 @@
   \end{column}
   \begin{column}{0.8\textwidth}
    \includegraphics[width=0.8\textwidth]{Illustrations/allbiometrics.jpg}
-       %http://www.smc2012.org/images/jain3-1.jpg
+       \only{\tiny{ http://www.smc2012.org/images/jain3-1.jpg} }
   \end{column}
   \end{columns}
 \end{frame}
@@ -166,6 +166,8 @@
   \begin{columns}
   \begin{column}{0.4\textwidth}
   \begin{itemize}
+  	\item 51 Subjects
+  	\linebreak
     \item Phone Clipped to Waist 
   	\linebreak
   	\item Walked Down 18.5 Meter Hallway
@@ -187,6 +189,8 @@
   \begin{columns}
   \begin{column}{0.6\textwidth}
   \begin{itemize}
+  	\item 47 Subjects
+  	\linebreak
     \item Phone in more natural location (pocket, handbag, backpack)
   	\linebreak
   	\item Performed in Real-world Environments
@@ -214,7 +218,9 @@
   \begin{columns}
   \begin{column}{0.5\textwidth}
   \begin{itemize}
-    \item Separates walking data from other noise
+    \item Separates accelerometer data into sections
+    \linebreak
+    \item Drops sections with little or no movement
     \linebreak
     \item Walks VS Frames
   \end{itemize}
@@ -237,7 +243,7 @@
 
 \subsection{Fixed Method Preprocessing}
 \begin{frame}
-  \frametitle{Linear Interpolation and Zero Normalization}
+  \frametitle{Fixed Method Preprocessing}
   \begin{columns}
   \begin{column}{0.4\textwidth}
   \begin{itemize}
@@ -254,6 +260,73 @@
 \includegraphics[width=0.91\textwidth]{Illustrations/onegaitcycle.png}
 
 \includegraphics[width=0.91\textwidth]{Illustrations/linear.png}
+
+\end{column}   
+  
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Walk Extraction}
+  \begin{columns}
+  \begin{column}{0.4\textwidth}
+  \begin{itemize}
+    \item Walk Extraction 
+  	\linebreak
+  	\item Separates walking data from non-walking data
+  \end{itemize}
+  \end{column}  
+  
+\begin{column}{0.5\textwidth}
+
+\includegraphics[width=0.91\textwidth]{Illustrations/onegaitcycle.png}
+
+\includegraphics[width=0.51\textwidth]{Illustrations/rawgaitdata.png}
+
+\end{column}   
+  
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Linear Interpolation}
+  \begin{columns}
+  \begin{column}{0.4\textwidth}
+  \begin{itemize}
+  	\item Linear Interpolation (curve fitting)
+
+  \end{itemize}
+  \end{column}  
+  
+\begin{column}{0.6\textwidth}
+
+%\includegraphics[width=0.91\textwidth]{Illustrations/onegaitcycle.png}
+
+\includegraphics[width=0.91\textwidth]{Illustrations/linear.png}
+
+\end{column}   
+  
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Zero Normalization}
+  \begin{columns}
+  \begin{column}{0.4\textwidth}
+  \begin{itemize}
+    \item Zero Normalization 
+  	\linebreak
+  	\item Only need the axis influenced by gravity
+  	\linebreak
+  	\item Acceleration along the other two axes must be zero
+  \end{itemize}
+  \end{column}  
+  
+\begin{column}{0.5\textwidth}
+
+\includegraphics[width=0.95\textwidth]{Illustrations/onegaitcycle.png}
+
+\includegraphics[width=0.95\textwidth]{Illustrations/gaitpatterns.png}
 
 \end{column}   
   
@@ -284,6 +357,26 @@
 %  \end{columns}
 %\end{frame}
 \subsection{Unfixed Method Preprocessing}
+
+\begin{frame}
+  \frametitle{Unfixed Method Preprocessing}
+  \begin{columns}
+  \begin{column}{0.5\textwidth}
+  	\begin{itemize}
+  		\item Framing   
+  		\linebreak
+  		\item Projection                     
+  	\end{itemize}
+  \end{column}
+\begin{column}{0.5\textwidth}
+
+\includegraphics[width=0.95\textwidth]{Illustrations/Framing.png}
+
+\includegraphics[width=0.95\textwidth]{Illustrations/global.jpg}
+\end{column} 
+  \end{columns}
+\end{frame}
+
 \begin{frame}
   \frametitle{Framing}
   \begin{columns}
@@ -299,7 +392,7 @@
   	\end{itemize}
   \end{column}
   \begin{column}{0.6\textwidth}
-   \includegraphics[width=0.6\textwidth]{Illustrations/frame.jpg}
+   \includegraphics[width=0.8\textwidth]{Illustrations/Framing.png}
        \\
   \end{column}
   
@@ -316,12 +409,12 @@
   		\linebreak
   		\item Estimating direction of gravity with changes in x, y, and z. 
   		\linebreak
-  		\item Each sample is split into two vectors: 
-  			\begin{itemize}
-  				\item Vertical (x)
-  				\item Horizontal (y, z)
-  				\linebreak
-			\end{itemize}
+%  		\item Each sample is split into two vectors: 
+%  			\begin{itemize}
+%  				\item Vertical (x)
+%  				\item Horizontal (y, z)
+%  				\linebreak
+%			\end{itemize}
   		\item Frame dropped if orientation is changed  
   	\end{itemize}
   
@@ -329,7 +422,10 @@
   
   \begin{column}{0.7\textwidth}
    \includegraphics[width=0.5\textwidth]{Illustrations/global.jpg}
-       \\
+   \\
+   %\only{\tiny{http://viz.aset.psu.edu/gho/sem_notes/3d_fundamentals/gifs/local_global_axes.gif}}
+
+       
   \end{column}
   
   \end{columns}
@@ -386,7 +482,7 @@
   \begin{columns}
   \begin{column}{.5\textwidth}
   \begin{itemize}
-  	\item Estimate cycle lengths by computing Minimum Salience Vectors
+  	\item Compute the Minimum Salience Vector of each cycle
   	\linebreak
   	\item Minimum Salience Vector
   		\begin{itemize}
@@ -396,7 +492,7 @@
   \end{itemize}
   \end{column}
     \begin{column}{0.7\textwidth}
-   \includegraphics[width=0.8\textwidth]{Illustrations/svector.png}
+   \includegraphics[width=0.8\textwidth]{Illustrations/svector2.png}
        \\
   \end{column}
   \end{columns}
@@ -409,12 +505,12 @@
   \begin{itemize}
   	\item Detecting Individual Cycles
   	\item Start of each cycle is located using the entry with the greatest value
-  	\item Spike around points 750, 1150, 1450, 1650 
+  	\item Spikes show the length of each cycle
   	\item Long cycles are split again using the same method
   \end{itemize}
   \end{column}
     \begin{column}{0.7\textwidth}
-   \includegraphics[width=0.8\textwidth]{Illustrations/svector.png}
+   \includegraphics[width=0.8\textwidth]{Illustrations/svector2.png}
        \\
   \end{column}
   \end{columns}
@@ -429,7 +525,7 @@
   	\linebreak
   	\item Cycles need to be of a set length for later Gait Analysis
   	\linebreak
-  	\item Linear Interpolation 
+  	\item Linear Interpolation helps to normalize the data
   \end{itemize}
   \end{column}
     \begin{column}{0.7\textwidth}
@@ -448,12 +544,15 @@
   	\linebreak
   	\item Dynamic Time Warping (DTW): An algorithm used to measure similarity between two sequences
   	\linebreak
-  	\item Cycles with an acceleration half that of the average are dropped
+  	\item Euclidean VS DTW
+  	\linebreak
+  	\item Cycles with half the distance of the average cycle are dropped
   \end{itemize}
   \end{column}
     \begin{column}{0.6\textwidth}
    \includegraphics[width=0.9\textwidth]{Illustrations/DTW.jpg}
-       \\
+       
+       %\only{\tiny{ http://www.slideshare.net/Henry_cu/eage2012-dtw-hvdb}}
   \end{column}
   \end{columns}
 \end{frame}
@@ -501,7 +600,7 @@
 \begin{frame}
 \frametitle{Walking Detection}
 	\begin{itemize}
-		\item Three classifications using a decision tree:
+		\item Three classifications:
 			\begin{itemize}
 				\item Walking: 1-2Hz
 				\linebreak
@@ -555,10 +654,12 @@
  \begin{columns}
   \begin{column}{.6\textwidth}
   \begin{itemize}
-		\item Useful to find periodicity and cadence of the gait
-		\item Collecting data from a phone inside a pocket
-		\item Jostling of the phone can create spikes
-		\item Segmentation, like minimum salience vectors, cannot be used
+		\item Useful to find periodicity and cadence of a cycle
+		\linebreak
+		\item Example: Phone inside a pocket
+		\linebreak
+		\item Segmentation methods, like minimum salience vectors, cannot be used
+		\linebreak
 		\item Autocorrelation can reveal features even with noise
   \end{itemize}
   \end{column}
@@ -570,7 +671,7 @@
   
 \end{frame}
 %/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-\section[Gait Analysis]{Gait Classification}
+\section[Gait Classification]{Gait Classification}
 
 \subsection{Overview}
 \begin{frame}
@@ -579,18 +680,6 @@
   \begin{column}{.9\textwidth}
   \begin{itemize}
   		\item Gait Classification determines if the user is "genuine" or an "impostor"
-  		\linebreak
-		\item Fixed Method Gait Classification
-			\begin{itemize}
-				\item Template-based 
-				\item Machine Learning 
-				\linebreak
-			\end{itemize}
-			
-		\item Unfixed Method Gait Classification
-			\begin{itemize}
-				\item Gausian Mixture Model-Universal Background Model
-			\end{itemize}
   \end{itemize}
   \end{column}
   \begin{column}{0.7\textwidth}
@@ -602,13 +691,33 @@
 
 \subsection{Fixed Method Gait Classification}
 \begin{frame}
+\frametitle{Fixed Method Gait Classification}
+ \begin{columns}
+  \begin{column}{.7\textwidth}
+  \begin{itemize}
+				\item Template-based 
+				\linebreak
+				\item Machine Learning 
+			
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.4\textwidth}
+   %\includegraphics[width=0.6\textwidth]{Illustrations/autocorrelationcd.png}
+       \\
+  \end{column}
+  \end{columns}  
+  
+\end{frame}
+
+
+\begin{frame}
 \frametitle{Template-based}
  \begin{columns}
-  \begin{column}{.8\textwidth}
+  \begin{column}{.9\textwidth}
   \begin{itemize}
-		\item Feature Cycle (the cycle with the lowest DTW distance)
+		\item Feature Cycle: The cycle with the lowest DTW distance 
 		\linebreak
-		\item Probe Cycles (the remaining cycles)
+		\item Probe Cycles: The remaining cycles
 		\linebreak
 		\item After computing probe and reference cycles for all walks two classes are made:
 			\begin{itemize}
@@ -619,7 +728,7 @@
 		
 		\item Genuine and Impostor are made by comparing the DTW distance of all the reference and probe cycles					
 		\linebreak
-		\item 50\% of the Probe cycles must vote genuine		
+		\item 50\% of the Probe cycles must be classified as genuine		
   \end{itemize}
   \end{column}
   \begin{column}{0.7\textwidth}
@@ -632,19 +741,21 @@
 \begin{frame}
 \frametitle{Machine Learning}
  \begin{columns}
-  \begin{column}{.8\textwidth}
+  \begin{column}{.65\textwidth}
   \begin{itemize}
   		\item Data is split into two groups:
   			\begin{itemize}
   				\item Training (80\%)
   				\item Testing (20\%)
+  				\linebreak
   			\end{itemize}
 		\item Support Vector Machines (SVMs) are used for biometric classification
+		\linebreak
 		\item A SVM finds a hyperplane that linearly separates data into two classes: genuine and impostor
   \end{itemize}
   \end{column}
-  \begin{column}{0.7\textwidth}
-   %\includegraphics[width=0.7\textwidth]{Illustrations/autocorrelation.png}
+  \begin{column}{0.6\textwidth}
+   \includegraphics[width=0.6\textwidth]{Illustrations/svm.jpg}
        \\
   \end{column}
   \end{columns}  
@@ -656,8 +767,9 @@
   \begin{column}{.6\textwidth}
   \begin{itemize}
   		\item The data is not usually linearly separable. Therefore, a kernel function is used.
-		\item A kernel function maps non linearly separable data to a high dimension space. 
-		\item These data points are now compared to the Testing data set. Again, the class with the maximum votes wins.
+		\item A kernel function maps non linearly separable data to a high dimension space 
+		\item These data points are now compared to the Testing data set and labelled as genuine or imposter
+		\item Classification: Class with the most data points
   \end{itemize}
   \end{column}
   \begin{column}{0.6\textwidth}
@@ -668,22 +780,37 @@
 \end{frame}
 
 \subsection{Unfixed Method Gait Classification}
+\begin{frame}
+\frametitle{Unixed Method Gait Classification}
+ \begin{columns}
+  \begin{column}{.9\textwidth}
+			\begin{itemize}
+				\item Universal Background Model: 
+				\begin{itemize}
+					\item Data Pooled from a group of subjects
+					\item Represents various gait patterns
+				\end{itemize}	
+			\end{itemize}
+  \end{column}
+  \begin{column}{0.4\textwidth}
+   %\includegraphics[width=0.6\textwidth]{Illustrations/autocorrelationcd.png}
+       \\
+  \end{column}
+  \end{columns}  
+  
+\end{frame}
  \begin{frame}
 \frametitle{Unfixed Method }
  \begin{columns}
   \begin{column}{.9\textwidth}
   \begin{itemize}
-  		\item The use of more than one training model is used to help classify gait cycles
-  		
-		\item Universal Background Model (UBM) is used to train a large source of data
-	
-		\item User's gait model is generated relating the odds of one event to the odds of another
-		
-		\item Maximum-a-Posteriori (MAP) is used to adjust Gaussian components and mixture weight to personalize the UBM model
-		
-		\item The current user's gait cycle is compared to the personalized UBM model and either accepts or rejects.
-
-		\item MAP is also used by recording false negatives
+		\item The UBM is trained with a user's data
+		\linebreak
+		\item The current user's gait model is generated from the extracted features
+		\linebreak
+		\item The current user's model is compared to the personalized Universal Background Model and either accepts or rejects.
+		\linebreak
+		\item Further training of the UBM is done by recording false negatives
   \end{itemize}
   \end{column}
   \begin{column}{0.2\textwidth}
@@ -693,13 +820,41 @@
   \end{columns}  
 \end{frame}
 
+\section[Results]{Results}
+\begin{frame}
+\frametitle{Conclusions}
+	\begin{itemize}
+		\item Accuracy calculated by Equal Error Rate (EER): 
+			\begin{itemize}
+			\item False acceptance rate and false rejection rate are equal. 
+			\item The Lower the EER the more accurate the method
+			\end{itemize}
+			\item EER:
+			\begin{itemize}
+			\item Fixed: EER 22.49\%
+			\item Unfixed: EER 14\%
+			\end{itemize}
+			\item RunTime: 
+			\begin{itemize}
+				\item Fixed: 2-3 minutes
+				\item Unfixed: 30 milliseconds
+			\end{itemize}
+				
+	\end{itemize}
+	
+\end{frame}
+
+
 \section[Conclusion]{Conclusion}
 \begin{frame}
 \frametitle{Conclusions}
 	\begin{itemize}
-		\item The unfixed method is developed more and is better for real-life situations
-		\linebreak
-		\item Given time, the fixed method can perform just as well as the unfixed method
+		\item The unfixed method:
+			\begin{itemize}
+				\item Uses a real-world approach 
+				\item More accurate
+				\item Faster
+			\end{itemize}
 	\end{itemize}
 	
 \end{frame}
@@ -713,7 +868,17 @@
 
 \begin{frame} 
 	\frametitle{References} 
-%	
+	
+	\begin{center}
+		{\LARGE Questions?}
+	\end{center}
+	
+\begin{itemize}
+\item[1)]H.~Lu, J.~Huang, T.~Saha, and L.~Nachman, Unobtrusive gait verification for mobile phones, 2014
+
+\item[2)] M.~Muaaz and R.~Mayrhofer, An analysis of different approaches to gait recognition using cellphone based accelerometers, 2013
+
+\end{itemize}
 %	\begin{thebibliography}{lskdjf}
 %	
 %	\bibitem{McPhee:2009:gecco}

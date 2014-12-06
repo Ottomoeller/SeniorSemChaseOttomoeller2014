@@ -1,0 +1,130 @@
+\beamer@endinputifotherversion {3.24pt}
+\headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
+\headcommand {\beamer@framepages {1}{1}}
+\headcommand {\sectionentry {1}{Overview}{2}{Overview}{0}}
+\headcommand {\beamer@sectionpages {1}{1}}
+\headcommand {\beamer@subsectionpages {1}{1}}
+\headcommand {\beamer@subsectionentry {0}{1}{1}{2}{The Big Picture}}\headcommand {\beamer@subsectionpages {2}{1}}
+\headcommand {\slideentry {1}{1}{1}{2/2}{The Big Picture}{0}}
+\headcommand {\beamer@framepages {2}{2}}
+\headcommand {\beamer@subsectionentry {0}{1}{2}{3}{Outline}}\headcommand {\beamer@subsectionpages {2}{2}}
+\headcommand {\slideentry {1}{2}{1}{3/3}{Outline}{0}}
+\headcommand {\beamer@framepages {3}{3}}
+\headcommand {\sectionentry {2}{Mobile Security}{4}{Background}{0}}
+\headcommand {\beamer@sectionpages {2}{3}}
+\headcommand {\beamer@subsectionpages {3}{3}}
+\headcommand {\slideentry {2}{0}{2}{4/4}{}{0}}
+\headcommand {\beamer@framepages {4}{4}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{5}{Biometrics}}\headcommand {\beamer@subsectionpages {4}{4}}
+\headcommand {\slideentry {2}{1}{1}{5/5}{Biometrics}{0}}
+\headcommand {\beamer@framepages {5}{5}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{6}{Two Methods}}\headcommand {\beamer@subsectionpages {5}{5}}
+\headcommand {\beamer@subsectionentry {0}{2}{3}{6}{}}\headcommand {\beamer@subsectionpages {6}{5}}
+\headcommand {\slideentry {2}{3}{1}{6/6}{}{0}}
+\headcommand {\beamer@framepages {6}{6}}
+\headcommand {\beamer@subsectionentry {0}{2}{4}{7}{}}\headcommand {\beamer@subsectionpages {6}{6}}
+\headcommand {\slideentry {2}{4}{1}{7/7}{}{0}}
+\headcommand {\beamer@framepages {7}{7}}
+\headcommand {\beamer@subsectionentry {0}{2}{5}{8}{}}\headcommand {\beamer@subsectionpages {7}{7}}
+\headcommand {\slideentry {2}{5}{1}{8/8}{}{0}}
+\headcommand {\beamer@framepages {8}{8}}
+\headcommand {\sectionentry {3}{Preprocessing the data}{9}{Preprocessing The Data}{0}}
+\headcommand {\beamer@sectionpages {4}{8}}
+\headcommand {\beamer@subsectionpages {8}{8}}
+\headcommand {\slideentry {3}{0}{2}{9/9}{}{0}}
+\headcommand {\beamer@framepages {9}{9}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{10}{What is Preprocessing?}}\headcommand {\beamer@subsectionpages {9}{9}}
+\headcommand {\slideentry {3}{1}{1}{10/10}{What is Preprocessing?}{0}}
+\headcommand {\beamer@framepages {10}{10}}
+\headcommand {\beamer@subsectionentry {0}{3}{2}{11}{Fixed Method Preprocessing}}\headcommand {\beamer@subsectionpages {10}{10}}
+\headcommand {\slideentry {3}{2}{1}{11/11}{Fixed Method Preprocessing}{0}}
+\headcommand {\beamer@framepages {11}{11}}
+\headcommand {\slideentry {3}{2}{2}{12/12}{Fixed Method Preprocessing}{0}}
+\headcommand {\beamer@framepages {12}{12}}
+\headcommand {\slideentry {3}{2}{3}{13/13}{Fixed Method Preprocessing}{0}}
+\headcommand {\beamer@framepages {13}{13}}
+\headcommand {\slideentry {3}{2}{4}{14/14}{Fixed Method Preprocessing}{0}}
+\headcommand {\beamer@framepages {14}{14}}
+\headcommand {\beamer@subsectionentry {0}{3}{3}{15}{Unfixed Method Preprocessing}}\headcommand {\beamer@subsectionpages {11}{14}}
+\headcommand {\slideentry {3}{3}{1}{15/15}{Unfixed Method Preprocessing}{0}}
+\headcommand {\beamer@framepages {15}{15}}
+\headcommand {\slideentry {3}{3}{2}{16/16}{Unfixed Method Preprocessing}{0}}
+\headcommand {\beamer@framepages {16}{16}}
+\headcommand {\slideentry {3}{3}{3}{17/17}{Unfixed Method Preprocessing}{0}}
+\headcommand {\beamer@framepages {17}{17}}
+\headcommand {\sectionentry {4}{Feature Extraction}{18}{Feature Extraction}{0}}
+\headcommand {\beamer@sectionpages {9}{17}}
+\headcommand {\beamer@subsectionpages {15}{17}}
+\headcommand {\slideentry {4}{0}{4}{18/18}{}{0}}
+\headcommand {\beamer@framepages {18}{18}}
+\headcommand {\beamer@subsectionentry {0}{4}{1}{19}{What is Feature Extraction?}}\headcommand {\beamer@subsectionpages {18}{18}}
+\headcommand {\slideentry {4}{1}{1}{19/19}{What is Feature Extraction?}{0}}
+\headcommand {\beamer@framepages {19}{19}}
+\headcommand {\beamer@subsectionentry {0}{4}{2}{20}{Fixed Method Feature Extraction}}\headcommand {\beamer@subsectionpages {19}{19}}
+\headcommand {\slideentry {4}{2}{1}{20/20}{Fixed Method Feature Extraction}{0}}
+\headcommand {\beamer@framepages {20}{20}}
+\headcommand {\slideentry {4}{2}{2}{21/21}{Fixed Method Feature Extraction}{0}}
+\headcommand {\beamer@framepages {21}{21}}
+\headcommand {\slideentry {4}{2}{3}{22/22}{Fixed Method Feature Extraction}{0}}
+\headcommand {\beamer@framepages {22}{22}}
+\headcommand {\slideentry {4}{2}{4}{23/23}{Fixed Method Feature Extraction}{0}}
+\headcommand {\beamer@framepages {23}{23}}
+\headcommand {\slideentry {4}{2}{5}{24/24}{Fixed Method Feature Extraction}{0}}
+\headcommand {\beamer@framepages {24}{24}}
+\headcommand {\beamer@subsectionentry {0}{4}{3}{25}{Unfixed Feature Extraction}}\headcommand {\beamer@subsectionpages {20}{24}}
+\headcommand {\slideentry {4}{3}{1}{25/25}{Unfixed Feature Extraction}{0}}
+\headcommand {\beamer@framepages {25}{25}}
+\headcommand {\slideentry {4}{3}{2}{26/26}{Unfixed Feature Extraction}{0}}
+\headcommand {\beamer@framepages {26}{26}}
+\headcommand {\slideentry {4}{3}{3}{27/27}{Unfixed Feature Extraction}{0}}
+\headcommand {\beamer@framepages {27}{27}}
+\headcommand {\slideentry {4}{3}{4}{28/28}{Unfixed Feature Extraction}{0}}
+\headcommand {\beamer@framepages {28}{28}}
+\headcommand {\slideentry {4}{3}{5}{29/29}{Unfixed Feature Extraction}{0}}
+\headcommand {\beamer@framepages {29}{29}}
+\headcommand {\sectionentry {5}{Gait Classification}{30}{Gait Classification}{0}}
+\headcommand {\beamer@sectionpages {18}{29}}
+\headcommand {\beamer@subsectionpages {25}{29}}
+\headcommand {\slideentry {5}{0}{6}{30/30}{}{0}}
+\headcommand {\beamer@framepages {30}{30}}
+\headcommand {\beamer@subsectionentry {0}{5}{1}{31}{Overview}}\headcommand {\beamer@subsectionpages {30}{30}}
+\headcommand {\slideentry {5}{1}{1}{31/31}{Overview}{0}}
+\headcommand {\beamer@framepages {31}{31}}
+\headcommand {\beamer@subsectionentry {0}{5}{2}{32}{Fixed Method Gait Classification}}\headcommand {\beamer@subsectionpages {31}{31}}
+\headcommand {\slideentry {5}{2}{1}{32/32}{Fixed Method Gait Classification}{0}}
+\headcommand {\beamer@framepages {32}{32}}
+\headcommand {\slideentry {5}{2}{2}{33/33}{Fixed Method Gait Classification}{0}}
+\headcommand {\beamer@framepages {33}{33}}
+\headcommand {\slideentry {5}{2}{3}{34/34}{Fixed Method Gait Classification}{0}}
+\headcommand {\beamer@framepages {34}{34}}
+\headcommand {\slideentry {5}{2}{4}{35/35}{Fixed Method Gait Classification}{0}}
+\headcommand {\beamer@framepages {35}{35}}
+\headcommand {\beamer@subsectionentry {0}{5}{3}{36}{Unfixed Method Gait Classification}}\headcommand {\beamer@subsectionpages {32}{35}}
+\headcommand {\slideentry {5}{3}{1}{36/36}{Unfixed Method Gait Classification}{0}}
+\headcommand {\beamer@framepages {36}{36}}
+\headcommand {\slideentry {5}{3}{2}{37/37}{Unfixed Method Gait Classification}{0}}
+\headcommand {\beamer@framepages {37}{37}}
+\headcommand {\sectionentry {6}{Results}{38}{Results}{0}}
+\headcommand {\beamer@sectionpages {30}{37}}
+\headcommand {\beamer@subsectionpages {36}{37}}
+\headcommand {\slideentry {6}{0}{3}{38/38}{}{0}}
+\headcommand {\beamer@framepages {38}{38}}
+\headcommand {\slideentry {6}{0}{4}{39/39}{}{0}}
+\headcommand {\beamer@framepages {39}{39}}
+\headcommand {\sectionentry {7}{Conclusion}{40}{Conclusion}{0}}
+\headcommand {\beamer@sectionpages {38}{39}}
+\headcommand {\beamer@subsectionpages {38}{39}}
+\headcommand {\slideentry {7}{0}{5}{40/40}{}{0}}
+\headcommand {\beamer@framepages {40}{40}}
+\headcommand {\slideentry {7}{0}{6}{41/41}{}{0}}
+\headcommand {\beamer@framepages {41}{41}}
+\headcommand {\sectionentry {8}{References}{42}{References}{0}}
+\headcommand {\beamer@sectionpages {40}{41}}
+\headcommand {\beamer@subsectionpages {40}{41}}
+\headcommand {\slideentry {8}{0}{7}{42/42}{}{0}}
+\headcommand {\beamer@framepages {42}{42}}
+\headcommand {\beamer@partpages {1}{42}}
+\headcommand {\beamer@subsectionpages {42}{42}}
+\headcommand {\beamer@sectionpages {42}{42}}
+\headcommand {\beamer@documentpages {42}}
+\headcommand {\def \inserttotalframenumber {42}}
